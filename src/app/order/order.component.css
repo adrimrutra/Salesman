@@ -1,0 +1,77 @@
+.product-img {
+  width: 20px;
+  height: 20px;
+}
+.product-img:hover {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+.order-bgr-color {
+  background-color: #eaeaea;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+table,
+thead,
+tbody,
+tr {
+  border: 3px solid #c8c1c1;
+  background-color: #f7f7f7;
+}
+
+td,
+th {
+  border: 2px solid #c8c1c1 !important;
+  text-align: center !important;
+  align-items: center !important;
+}
+
+.form-control {
+  background-color: #f7f7f7;
+}
+
+.margin-0 {
+  margin: 0;
+}
+.text-align {
+  text-align: center;
+}
+
+.thumbnail-width {
+  width: 50px !important;
+  margin-bottom: 0px !important;
+}
+
+
+@media (min-width: 480px)
+{
+  .container-xs {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}
+
+
+
+/* @media (min-width: 200px) and (max-width: 480px) */
+@media (min-width: 480px) and (max-width: 771px)
+{
+  .container-xs {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  .clear-both{
+    clear: both !important;
+  }
+
+}

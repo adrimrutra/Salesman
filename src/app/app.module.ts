@@ -1,16 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { AgGridModule } from 'ag-grid-angular';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule, BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
+
 
 import { AppComponent } from './app.component';
+import { OrderComponent } from './order/order.component';
+import { AppRoutingModule } from './app.routing.module';
+
+import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
+import { CustomerSelectComponent } from './customer/customer-select/customer-select.component';
+import { FormStorageService } from './_services/form-storage.service';
+import { ProductsSelectComponent } from './products-select/products-select.component';
+import { NavComponent } from './nav/nav.component';
+import { AddressComponent } from './forms/address/address.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      OrderComponent,
+      CustomerCreateComponent,
+      CustomerSelectComponent,
+      ProductsSelectComponent,
+      NavComponent,
+      AddressComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule,
+      ReactiveFormsModule,
+      AgGridModule.withComponents([]),
+      ModalModule.forRoot(),
+      FormsModule,
+      BrowserAnimationsModule,
+      BsDatepickerModule.forRoot(),
+      AlertModule.forRoot()
+   ],
+   providers: [
+      FormStorageService
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

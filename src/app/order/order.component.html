@@ -1,0 +1,493 @@
+<div class="container container-xs">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <!-- <h1 class="pull-left" style="margin-bottom: 60px;">New Order</h1> -->
+      <h1 style="margin-bottom: 60px;">New Order</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- left -->
+    <div class="col-xs-12 col-sm-6 col-md-4">
+
+
+      <div class="row">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <label class="col-xs-4 col-sm-3 col-md-3 control-label">Customer</label>
+            <div class="col-xs-4 col-sm-5 col-md-5">
+              <app-customer-select class="pull-left" (selectedCustomer)="onSelectedCustomer($event)">
+              </app-customer-select>
+            </div>
+            <!-- <label class="col-sm-3 control-label">or</label> -->
+            <div class="col-xs-4 col-sm-4 col-md-4">
+              <app-customer-create class="pull-right"></app-customer-create>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <!-- left -->
+      <div class="col-xs-12 col-sm-6 col-md-4">
+
+
+
+        <div class="row">
+          <div class="form-horizontal">
+
+            <div class="form-group">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <h4 class="text-center">Bill To</h4>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 control-label" for="company_name">Company Name</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.companyName}}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 control-label" for="dba">DBA</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.dba}}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 control-label" for="address1">Address 1</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.billingAddress.street1}}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="address2">Address 2</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.billingAddress.street2}}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="city">City</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.billingAddress.city}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="state">State</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.billingAddress.country}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="zip">ZIP</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.billingAddress.postcode}}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- centre -->
+      <div class="col-xs-12 col-sm-6 col-md-4">
+
+        <div class="row">
+          <div class="form-horizontal">
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="shipVia">Ship Via</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <input type="text" class="form-control" id="shipVia" placeholder="e.g container"
+                  formControlName="shipVia">
+                <span *ngIf="!orderForm.get('shipVia').valid && orderForm.get('shipVia').touched"
+                  class="help-block">This field is required!
+                </span>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">Ship To</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <select class="form-control" (change)="onChangeSippingAddress($event.target.value)">
+                  <option [value]="i" *ngFor="let address of curCustomer.addresses; let i = index">
+                    {{address.street1 +', '+ address.city +', '+ address.country +', '+ address.postcode}}
+                  </option>
+                </select>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">Company Name</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.companyName}}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">Address 1</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.sippingAddress.street1}}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">Address 2</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.sippingAddress.street2}}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">City</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.sippingAddress.city}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">State</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.sippingAddress.country}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">ZIP</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{order.sippingAddress.postcode}}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- right -->
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="row">
+          <div class="form-horizontal">
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="sales_person">Sales Rep.</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <div class="btn-group" data-toggle="buttons">
+                  <label class="btn btn-primary" *ngFor="let person of salesPersons;"
+                    (click)="onSalesPersonChanged(person.code)">
+                    <input type="radio" name="salesPerson" [value]="person">
+                    {{ person.firstName }}
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="orderTaken">Order Taken By</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <select id="orderTaken" class="form-control" formControlName="orderTaken">
+                  <option [value]="option" *ngFor="let option of orderOption; let i = index">
+                    {{option}}
+                  </option>
+                  <span *ngIf="!orderForm.get('orderTaken').valid && orderForm.get('orderTaken').touched"
+                    class="help-block">This field is required!
+                  </span>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="show_code">Show Code</label>
+              <div class="col-xs-8 col-sm-8 col-sm-8">
+                <span class="form-control">{{code}}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Order number-->
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+          <div class="row">
+
+
+            <div class="col-xs-4 col-sm-2 col-md-2">
+              <div class="form-group">
+                <label class="control-label" for="orderNumber">Order Number</label>
+                <div class="col-xs-8 col-sm-8 col-sm-8"></div>
+                <input type="text" class="form-control" id="orderNumber" formControlName="orderNumber"
+                  placeholder="order number">
+                <span *ngIf="!orderForm.get('orderNumber').valid && orderForm.get('orderNumber').touched"
+                  class="help-block">This field is required!
+                </span>
+              </div>
+            </div>
+
+            <div class="col-xs-4 col-sm-2 col-md-2">
+              <div class="form-group">
+                <label class="control-label" for="dateSold">Date Of Sold</label>
+                <input type="text" id="dateSold" placeholder="Date Of Sold" class="form-control" 
+                  bsDatepicker formControlName="dateSold" [bsConfig]="bsConfig">
+              </div>
+            </div>
+
+            <div class="col-xs-4 col-sm-2 col-md-2">
+              <div class="form-group">
+                <label class="control-label" for="customerPo">Customer P.O</label>
+                <input type="text" class="form-control" id="customerPo" 
+                  formControlName="customerPo" placeholder="customer p o">
+                <span *ngIf="!orderForm.get('customerPo').valid && orderForm.get('customerPo').touched"
+                  class="help-block">This field is required!
+                </span>
+              </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 clear-both">
+              <label class="control-label" for="terms">Terms</label>
+              <select id="terms" class="form-control" formControlName="terms">
+                <option [value]="term" *ngFor="let term of orderTermsOption; let i = index">
+                  {{term}}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3">
+              <div class="form-group">
+                <label class="control-label" for="dept">Dept.</label>
+                <input type="text" class="form-control" id="dept" formControlName="dept" placeholder="dept">
+                <span *ngIf="!orderForm.get('dept').valid && orderForm.get('dept').touched" class="help-block">This
+                  field is required!
+                </span>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+      <!-- Order number end -->
+
+      <!-- products -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+
+            <div class="col-xs-6 col-sm-3 col-md-3">
+              <div class="form-group">
+                <app-products-select [newProducts]="order.products" (selectedProducts)="onSelectedProducts($event)">
+                </app-products-select>
+              </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3">
+              <select id="orderType" class="form-control" formControlName="orderType">
+                <option [value]="type" *ngFor="let type of orderTypeOption; let i = index">
+                  {{type}}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3 clear-both">
+              <div class="checkbox pull-right">
+                <label>
+                  <input type="checkbox" (change)="onShowTotal($event)">
+                  Show Total
+                </label>
+              </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-3 col-md-3">
+              <div class="form-group">
+                <label class="sr-only" for="total">Total (in dollars)</label>
+                <div class="input-group">
+                  <div class="input-group-addon">$</div>
+                  <!-- <input type="text" class="form-control" id="total" [value]="" readonly placeholder="Total"> -->
+                  <span class="form-control">{{localTotal}}</span>
+                  <div class="input-group-addon">.00</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- table -->
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>ID</th>
+                <th>SKU</th>
+                <th>Quantities</th>
+                <th>Color</th>
+                <th>Run</th>
+                <th>Pares</th>
+                <th>ETA</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Customer SKU</th>
+                <th>Special Instructions</th>
+                <th></th>
+              </tr>
+            </thead>
+
+
+            <tbody>
+              <tr *ngFor="let product of order.products, let i=index;">
+                <td>
+                  <div class="thumbnail thumbnail-width">
+                    <img src="{{product.mainImg.img}}" alt="logo">
+                  </div>
+                </td>
+
+                <td>{{product.id}}</td>
+                <td>{{product.sku}}</td>
+                <td>{{product.quantities}}</td>
+                <td>{{product.color.colorName}}</td>
+                <td>{{product.sizeRun.run}}</td>
+                <td>I don know Pares</td>
+
+                <!-- <td>{{product.etaStart1 + " " + product.etaEnd1}}</td> -->
+                <td>
+                  <input type="text" class="form-control" placeholder="ETA" bsDaterangepicker
+                    [(ngModel)]="product.etaStart1" [ngModelOptions]="{standalone: true}" [bsConfig]="bsConfig" />
+                </td>
+
+
+
+                <td>
+                  <input type="number" class="form-control" id="product.price" min="0" [(ngModel)]="product.price"
+                    [ngModelOptions]="{standalone: true}" placeholder="Price">
+                </td>
+
+                <td>Amount</td>
+
+                <td>
+                  <input type="text" class="form-control" id="product.customerSku" [(ngModel)]="product.customerSku"
+                    [ngModelOptions]="{standalone: true}" placeholder="Customer Sku">
+                </td>
+
+                <td>
+                  <input type="text" class="form-control" id="product.specialInstructions"
+                    [(ngModel)]="product.specialInstructions" [ngModelOptions]="{standalone: true}"
+                    placeholder="Special Instructions">
+                </td>
+
+                <td>
+
+                  <button type="button" class="close pull-right form-control" aria-label="Close" (click)="onThumbnail(product.id)">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- table end -->
+
+
+      <!-- bottom line -->
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+              <div class="form-group">
+                <label class="control-label" for="orderComments">Order Comments</label>
+                <textarea class="form-control" rows="5" formControlName="orderComments"></textarea>
+              </div>
+            </div>
+
+
+            <div class="col-xs-4 col-sm-offset-1 col-sm-3 col-md-offset-1 col-md-3">
+              <label class="control-label" for="">Order Option</label>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="" formControlName="shipEarly">
+                  Ship Early
+                </label>
+              </div>
+            </div>
+
+
+            <div class="col-xs-8 col-sm-4 col-md-4">
+
+
+              <div class="row">
+
+                <div class="form-group">
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label">Total Cases</label>
+                  <div class="col-xs-6 col-sm-6 col-md-4">
+                    <span class="form-control">{{order.totalCases}}</span>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label">Total Pares</label>
+                  <div class="col-xs-6 col-sm-6 col-md-4">
+                    <span class="form-control">{{order.totalPares}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="form-group">
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label">Total</label>
+                  <div class="col-xs-6 col-sm-6 col-md-4">
+                    <span class="form-control">{{order.total}}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- bottom line end-->
+
+
+      <div class="row" style="margin-top: 30px; margin-bottom: 50px;">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <button type="submit" [disabled]="!orderForm.valid" class="btn btn-success pull-right">Create Order</button>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </form>
+
+</div>

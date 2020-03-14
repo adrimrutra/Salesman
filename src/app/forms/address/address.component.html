@@ -1,0 +1,164 @@
+<form [formGroup]="addressForm">
+  <div class="col-sm-6">
+    <h5 class="pull-left">Address</h5>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="street1" formControlName="street1" placeholder="Street 1">
+            <span *ngIf="!addressForm.get('street1').valid && addressForm.get('street1').touched"
+              class="help-block">
+              This field is required!
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="street2" formControlName="street2"
+              placeholder="Street 2">
+            <span *ngIf="!addressForm.get('street2').valid && addressForm.get('street2').touched"
+              class="help-block">
+              This field is required!
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="city" formControlName="city" placeholder="City">
+            <span *ngIf="!addressForm.get('city').valid && addressForm.get('city').touched"
+              class="help-block">
+              This field is required!
+            </span>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" id="state" formControlName="state" placeholder="State">
+            <span *ngIf="!addressForm.get('state').valid && addressForm.get('state').touched"
+              class="help-block">
+              This field is required!
+            </span>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" id="postcode" formControlName="postcode" placeholder="ZIP">
+            <span *ngIf="!addressForm.get('postcode').valid && addressForm.get('postcode').touched"
+              class="help-block">
+              This field is required!
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="country" formControlName="country" placeholder="Country">
+            <span *ngIf="!addressForm.get('country').valid && addressForm.get('country').touched"
+              class="help-block">
+              This field is required!
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="shippingInstructions" formControlName="shippingInstructions" placeholder="Shipping instructions">
+            <span
+              *ngIf="!addressForm.get('shippingInstructions').valid && addressForm.get('shippingInstructions').touched"
+              class="help-block">
+              This field is required!
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <select id="paymentTerms" class="form-control" formControlName="paymentTerms">
+              <option [value]="term" *ngFor="let term of terms; let i = index">
+                {{term}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <select id="shippingPreference" class="form-control" formControlName="shippingPreference">
+              <option [value]="ship" *ngFor="let ship of preference; let i = index">
+                {{ship}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="shippingPreferenceAccount"
+              formControlName="shippingPreferenceAccount" placeholder="Shipper Account No.">
+            <span
+              *ngIf="!addressForm.get('shippingPreferenceAccount').valid && addressForm.get('shippingPreferenceAccount').touched"
+              class="help-block">
+              This field is required!
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" formControlName="billing">Billing Address
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <button type="button" class="btn btn-danger pull-left" (click)="delete()">Remove Address</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

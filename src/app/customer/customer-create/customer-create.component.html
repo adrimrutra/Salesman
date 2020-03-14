@@ -1,0 +1,375 @@
+<button class="btn btn-success" (click)="modalRef.show()">New customer</button>
+
+
+<div bsModal #template #modalRef="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="create-customer">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="create-customer" class="modal-title pull-left">Create Customer</h4>
+        <button type="button" class="close pull-right" (click)="modalRef.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-bgr-color">
+        <div class="container-fluid">
+          <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <div class="col-md-4">
+
+              </div>
+
+              <div class="col-md-8">
+                <div class="col-xs-9 col-sm-9 col-md-10">
+                  <div class="form-group">
+                    <button type="button" class="btn btn-danger pull-right" (click)="modalRef.hide()">Cancel</button>
+                  </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-2">
+                  <div class="form-group">
+                    <button type="submit" [disabled]="!customerForm.valid"
+                      class="btn btn btn-success pull-right">Create</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- second row -->
+            <div class="row">
+
+              <div class="col-md-4">
+                <div class="row">
+                  <div class="col-xs-6 col-md-3">
+
+                    <img class="company-logo" src="../../../assets/logo.jpg" alt="logo">
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-8">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <input type="text" class="form-control" id="companyName" formControlName="companyName"
+                          placeholder="company name">
+                        <span *ngIf="!customerForm.get('companyName').valid && customerForm.get('companyName').touched"
+                          class="help-block">
+                          This field is required!
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" id="customerNumber" placeholder="Customer No."
+                          formControlName="customerNumber">
+                        <span
+                          *ngIf="!customerForm.get('customerNumber').valid && customerForm.get('customerNumber').touched"
+                          class="help-block">
+                          This field is required!
+                        </span>
+                      </div>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" id="dba" formControlName="dba" placeholder="DBA">
+                        <span *ngIf="!customerForm.get('dba').valid && customerForm.get('dba').touched"
+                          class="help-block">
+                          This field is required!
+                        </span>
+                      </div>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" id="vatNumber" formControlName="vatNumber"
+                          placeholder="Tax ID">
+                        <span *ngIf="!customerForm.get('vatNumber').valid && customerForm.get('vatNumber').touched"
+                          class="help-block">
+                          This field is required!
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="website" formControlName="website"
+                          placeholder="website">
+                        <span *ngIf="!customerForm.get('website').valid && customerForm.get('website').touched"
+                          class="help-block">
+                          This field is required!
+                        </span>
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="phoneCell" formControlName="phoneCell"
+                          placeholder="Phone">
+
+                        <span *ngIf="!customerForm.get('phoneCell').valid && customerForm.get('phoneCell').touched"
+                          class="help-block">
+                          <span *ngIf="customerForm.get('phoneCell').errors['pattern']">Phone format should be
+                            0000000000</span>
+                          <span *ngIf="customerForm.get('phoneCell').errors['required']">This field is
+                            required!</span>
+                        </span>
+
+
+
+
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="phoneLandline" formControlName="phoneLandline"
+                          placeholder="Mobile">
+                        <span
+                          *ngIf="!customerForm.get('phoneLandline').valid && customerForm.get('phoneLandline').touched"
+                          class="help-block">
+                          <span *ngIf="customerForm.get('phoneLandline').errors['pattern']">Phone format should be
+                            0000000000</span>
+                          <span *ngIf="customerForm.get('phoneLandline').errors['required']">This field is
+                            required!</span>
+                        </span>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+
+
+
+            <!-- third row -->
+            <div class="row">
+
+              <div class="col-md-6">
+
+                <div class="form-group padding-l-r">
+                  <label for="Salesperson">Salesperson</label>
+                  <select id="salesperson1" class="form-control" formControlName="salesperson1">
+                    <option [value]="person.code" *ngFor="let person of salesPersons; let i = index">
+                      {{person.firstName +' '+ person.lastName}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group padding-l-r">
+                  <select id="salesperson2" class="form-control" formControlName="salesperson2">
+                    <option [value]="person.code" *ngFor="let person of salesPersons; let i = index">
+                      {{person.firstName +' '+ person.lastName}}
+                    </option>
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group padding-l-r">
+                  <label for="notes">Notes</label>
+                  <input type="text" class="form-control" id="notes" formControlName="notes" placeholder="Notes">
+                </div>
+              </div>
+
+
+              <!-- third row end -->
+              <div class="row">
+                <div class="col-md-12 divider-line">
+                </div>
+              </div>
+
+            </div>
+
+            <!-- forth row  -->
+            <div style="margin-top: 25px">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <div class="col-sm-6">
+                    <h4 class="row pull-left">Addresses</h4>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <button type="button" class="btn btn-success pull-right" (click)="addAddress()">Add
+                        Address</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- forth row-->
+
+            <!-- fifth row-->
+            <div class="row" style="margin-top: 25px">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <!-- left side-->
+
+
+                  <div *ngFor="let address of addresses?.controls; let i = index">
+                    <app-address [index]="i" [addressForm]="address" (deleteAddress)="deleteAddress($event)">
+                    </app-address>
+                  </div>
+
+
+                  <!-- right side-->
+                  <div class="col-sm-6">
+                    <h5 class="pull-left">Contact</h5>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-sm-12 col-md-6">
+                            <input type="text" class="form-control" id="contactFirstName"
+                              formControlName="contactFirstName" placeholder="First Name">
+                            <span
+                              *ngIf="!customerForm.get('contactFirstName').valid && customerForm.get('contactFirstName').touched"
+                              class="help-block">
+                              This field is required!
+                            </span>
+                          </div>
+                          <div class="col-sm-12 col-md-6">
+                            <input type="text" class="form-control" id="contactLastName"
+                              formControlName="contactLastName" placeholder="Last name">
+                            <span
+                              *ngIf="!customerForm.get('contactLastName').valid && customerForm.get('contactLastName').touched"
+                              class="help-block">
+                              This field is required!
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <input type="email" class="form-control" id="contactEmail" formControlName="contactEmail"
+                              placeholder="Email">
+                            <span
+                              *ngIf="!customerForm.get('contactEmail').valid && customerForm.get('contactEmail').touched"
+                              class="help-block">
+                              This field is required!
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <input type="test" class="form-control" id="contactPhoneCell"
+                              formControlName="contactPhoneCell" placeholder="Cell Phone">
+                            <span
+                              *ngIf="!customerForm.get('contactPhoneCell').valid && customerForm.get('contactPhoneCell').touched"
+                              class="help-block">
+                              <span *ngIf="customerForm.get('contactPhoneCell').errors['pattern']">Phone format
+                                should be 0000000000</span>
+                              <span *ngIf="customerForm.get('contactPhoneCell').errors['required']">This field is
+                                required!</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <input type="test" class="form-control" id="contactPhoneLandline"
+                              formControlName="contactPhoneLandline" placeholder="Landline Phone">
+                            <span
+                              *ngIf="!customerForm.get('contactPhoneLandline').valid && customerForm.get('contactPhoneLandline').touched"
+                              class="help-block">
+                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['pattern']">Phone format
+                                should be 0000000000</span>
+                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['required']">This field is
+                                required!</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <input type="test" class="form-control" id="contactFax" formControlName="contactFax"
+                              placeholder="Fax">
+                            <span
+                              *ngIf="!customerForm.get('contactFax').valid && customerForm.get('contactFax').touched"
+                              class="help-block">
+                              <span *ngIf="customerForm.get('contactFax').errors['pattern']">Fax format
+                                should be 0000000000</span>
+                              <span *ngIf="customerForm.get('contactFax').errors['required']">This field is
+                                required!</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" formControlName="contactIsResidence">Is Residence ?
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            <!-- fifth row end-->
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

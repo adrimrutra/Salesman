@@ -1,0 +1,57 @@
+<button type="button" class="btn btn-success" (click)="onOpenProductModal(template)">Add or Edit Product</button>
+<br>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Select Products</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Thumbnail</th>
+            <th>ID</th>
+            <th>SKU</th>
+            <th>Quantities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products, let i=index;">
+           
+            <td>
+              <div class="checkbox">
+                <label class="margin-0">
+                  <input type="checkbox" 
+                    [(ngModel)]="product.thumbnail" 
+                    (change)="onThumbnail($event)" 
+                    [value]="product.id"
+                    >
+                </label>
+              </div>
+            </td>
+
+            <td>{{product.id}}</td>
+            <td>{{product.sku}}</td>
+            
+            <td>
+              <div class="form-group margin-0">
+                <input type="number" 
+                [disabled]="!product.thumbnail" 
+                [(ngModel)]="product.quantities" 
+                class="form-control"
+                placeholder="quantities"
+                min="0">
+              </div>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-danger pull-left" (click)="modalRef.hide()">Cancel</button>
+      <button type="button" class="btn btn-success pull-right" (click)="onSelectProducts()">Select</button>
+    </div>
+  </div>
+</ng-template>

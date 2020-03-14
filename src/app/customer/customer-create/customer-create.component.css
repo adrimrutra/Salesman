@@ -1,0 +1,33 @@
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+
+.divider-line {
+    height: 1px;
+    border: 1px solid #404040;
+}
+
+.modal-bgr-color{
+    background-color: #EAEAEA;
+}
+
+.company-logo {
+    overflow: hidden;
+    width: 180px !important;
+    height: 180px !important;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 50;
+  }
+  
+ .padding-l-r {
+    padding-left: 15px;
+    padding-right: 15px;
+ } 

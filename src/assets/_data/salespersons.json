@@ -1,0 +1,17 @@
+[
+  {
+    "code": "008",
+    "firstName": "Steve",
+    "lastName": "Smith"
+  },
+  {
+    "code": "009",
+    "firstName": "Mark",
+    "lastName": "Smith"
+  },
+  {
+    "code": "010",
+    "firstName": "John",
+    "lastName": "Smith"
+  }
+]
