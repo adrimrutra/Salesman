@@ -3,10 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { IgxGridModule, IgxAvatarModule } from 'igniteui-angular';
 
 import { AgGridModule } from 'ag-grid-angular';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 import { ModalModule, BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
 
 
@@ -36,12 +41,14 @@ import { AddressComponent } from './forms/address/address.component';
       AppRoutingModule,
       HttpClientModule,
       ReactiveFormsModule,
-      AgGridModule.withComponents([]),
-      ModalModule.forRoot(),
       FormsModule,
       BrowserAnimationsModule,
+      AgGridModule.withComponents([]),
+      ModalModule.forRoot(),
       BsDatepickerModule.forRoot(),
-      AlertModule.forRoot()
+      AlertModule.forRoot(),
+      IgxGridModule,
+      IgxAvatarModule
    ],
    providers: [
       FormStorageService

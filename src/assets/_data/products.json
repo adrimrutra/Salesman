@@ -3,6 +3,7 @@
     "id": 88888,
     "quantities": 0,
     "thumbnail": false,
+    "price": 56.90,
     "mainImg": {
       "id": 109562,
       "img": "https://www.brooksrunning.com/dw/image/v2/aaev_prd/on/demandware.static/-/Sites-BrooksCatalog/default/dwbb729ac9/images/ProductImages/120283/120283_097_l_WR.jpg",
@@ -150,8 +151,8 @@
     "futureAvlQty": 10,
     "totalAvlQty": 10,
     "futureQty1": 10,
-    "etaStart1": "7/12Z*",
-    "etaEnd1": "9/30",
+    "etaStart1": "2020-01-14",
+    "etaEnd1": "2020-02-27",
     "futureQty2": 0,
     "etaStart2": "",
     "etaEnd2": "",
@@ -174,6 +175,7 @@
     "id": 88889,
     "quantities": 0,
     "thumbnail": false,
+    "price": 56.90,
     "mainImg": {
       "id": 109562,
       "img": "https://www.brooksrunning.com/dw/image/v2/aaev_prd/on/demandware.static/-/Sites-BrooksCatalog/default/dwbb729ac9/images/ProductImages/120283/120283_097_l_WR.jpg",
@@ -345,6 +347,7 @@
     "id": 88890,
     "quantities": 0,
     "thumbnail": false,
+    "price": 56.90,
     "mainImg": {
       "id": 109562,
       "img": "https://www.brooksrunning.com/dw/image/v2/aaev_prd/on/demandware.static/-/Sites-BrooksCatalog/default/dwbb729ac9/images/ProductImages/120283/120283_097_l_WR.jpg",
@@ -516,6 +519,7 @@
     "id": 88891,
     "quantities": 0,
     "thumbnail": false,
+    "price": 56.90,
     "mainImg": {
       "id": 109562,
       "img": "https://www.brooksrunning.com/dw/image/v2/aaev_prd/on/demandware.static/-/Sites-BrooksCatalog/default/dwbb729ac9/images/ProductImages/120283/120283_097_l_WR.jpg",
@@ -687,6 +691,7 @@
     "id": 88893,
     "quantities": 0,
     "thumbnail": false,
+    "price": 56.90,
     "mainImg": {
       "id": 109562,
       "img": "https://www.brooksrunning.com/dw/image/v2/aaev_prd/on/demandware.static/-/Sites-BrooksCatalog/default/dwbb729ac9/images/ProductImages/120283/120283_097_l_WR.jpg",

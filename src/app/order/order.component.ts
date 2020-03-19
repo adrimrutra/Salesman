@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -19,6 +19,8 @@ import {
 } from '../commons/common';
 import { AlertifyService } from '../_services/alertify.service';
 
+import { IgxGridComponent } from 'igniteui-angular';
+
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -38,6 +40,26 @@ export class OrderComponent implements OnInit {
   isNewCustomer = false;
 
   bsConfig: any;
+
+  @ViewChild('basketGrid', { static: true, read: IgxGridComponent }) basketGrid: IgxGridComponent;
+
+  cellStyles = {
+    fontSize: '12px',
+    borderRight: '1px',
+    borderRightStyle: 'solid',
+    borderBottom: '1px',
+    borderBottomStyle: 'solid',
+    borderColor: '#E1E1E1',
+    textAlign: 'justify'
+  };
+
+  btnStyles = {
+    fontSize: '20px',
+    width: '50px',
+    borderBottom: '1px',
+    borderBottomStyle: 'solid',
+    borderColor: '#E1E1E1'
+  };
 
   constructor(
     private formStorageService: FormStorageService,
@@ -86,17 +108,47 @@ export class OrderComponent implements OnInit {
     this.orderCalculate();
   }
 
+  removeRow(index: number) {
+    const row = this.basketGrid.getRowByIndex(index);
+    row.delete();
+  }
+
   // ---------------------------------------------------------------------------------------------------------------
     // You have to count totalPares totalCases and total price and set them for order
 
   orderCalculate() {
-    let count = 0;
-    this.order.products.map(prod => (count += prod.quantities));
+    let totalCases = 0;
+    let totalPares = 0;
+    let price = 0;
+    let tmp: any;
+    this.order.products.map(prod => (totalPares += prod.sizeRun.totalPairs));
+    this.order.products.map(prod => (totalCases += prod.quantities));
+    this.order.products.map(prod => (price += (prod.quantities * prod.price)));
 
-    this.order.totalPares = count;
-    this.order.totalCases = count;
-    this.order.total = count * 5;
+    this.order.totalPares = totalPares;
+    this.order.totalCases = totalCases;
+
+    tmp = Number.parseFloat(price.toString()).toFixed(2);
+    console.log(tmp);
+
+    this.order.total = +tmp;
+    console.log(this.order.total);
+    if (tmp.length === 2) {
+      console.log(tmp.length);
+      if (tmp[1].length === 1) {
+        tmp = Number.parseFloat(price.toString()).toFixed(2) + '0';
+        this.order.total = +tmp;
+      }
+    }
+
+
+
+    //this.order.total =  +Number.parseFloat(price.toString()).toFixed(2);
   }
+
+  // round(value, decimals) {
+  //   return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+  // }
 
   onSelectedCustomer(customer: Customer) {
     this.curCustomer = customer;
@@ -156,8 +208,10 @@ export class OrderComponent implements OnInit {
     this.order.products = new Array<Product>();
     this.order.billingAddress = new Address();
     this.order.sippingAddress = new Address();
+    this.order.salesPerson = null;
     this.curCustomer = new Customer();
     this.curCustomer.addresses = new Array<Address>();
+    this.localTotal = '';
    }
 
 

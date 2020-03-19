@@ -4,10 +4,79 @@ import { ProductColor } from './ProductColor';
 import { SizeRun } from './SizeRun';
 
 export class Product {
+
+  get Id() {
+    return this.id;
+  }
+  get Sku() {
+    return this.sku;
+  }
+  get Quantities() {
+    return this.quantities;
+  }
+  set Quantities(val) {
+    this.quantities = val;
+  }
+
+  get Color() {
+    return this.color.colorName;
+  }
+  get Run() {
+    return this.sizeRun.run;
+  }
+
+  get Price() {
+    return this.price;
+  }
+  set Price(val) {
+    this.price = val;
+  }
+
+  get CustomerSku() {
+    return this.customerSku;
+  }
+
+  set CustomerSku(val) {
+    this.customerSku = val;
+  }
+
+  get SpecialInstructions() {
+    return this.specialInstructions;
+  }
+  set SpecialInstructions(val) {
+    this.specialInstructions = val;
+  }
+
+  get Pares() {
+    return this.sizeRun.totalPairs;
+  }
+  set Pares(val) {
+    this.sizeRun.totalPairs = val;
+  }
+
+  get EtaFrom() {
+    return this.etaStart1;
+  }
+  set EtaFrom(val) {
+    this.etaStart1 = val;
+  }
+
+  get EtaTo() {
+    return this.etaEnd1;
+  }
+  set EtaTo(val) {
+    this.etaEnd1 = val;
+  }
+
+  get Image() {
+    return this.mainImg.img;
+  }
+
   id: number;
   thumbnail: boolean;
   quantities: number;
   specialInstructions: string;
+  pares: number;
   mainImg: ProductImage;
   color: ProductColor;
   sizeRun: SizeRun;
@@ -56,8 +125,8 @@ export class Product {
   futureAvlQty: number;
   totalAvlQty: number;
   futureQty1: number;
-  etaStart1: string;
-  etaEnd1: string;
+  etaStart1: Date;
+  etaEnd1: Date;
   futureQty2: number;
   etaStart2: string;
   etaEnd2: string;

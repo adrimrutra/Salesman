@@ -4,12 +4,10 @@
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
 
-
+@import "~minireset.css/minireset";
 
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 
 
-.order-bgr-color{
-    background-color: #EAEAEA;
-}
+
