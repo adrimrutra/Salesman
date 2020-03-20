@@ -19,7 +19,6 @@ import {
 } from '../commons/common';
 import { AlertifyService } from '../_services/alertify.service';
 
-import { IgxGridComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-order',
@@ -41,25 +40,10 @@ export class OrderComponent implements OnInit {
 
   bsConfig: any;
 
-  @ViewChild('basketGrid', { static: true, read: IgxGridComponent }) basketGrid: IgxGridComponent;
+  productForm: FormGroup;
+  editedRowIndex: number;
+  editedProduct: Product;
 
-  cellStyles = {
-    fontSize: '12px',
-    borderRight: '1px',
-    borderRightStyle: 'solid',
-    borderBottom: '1px',
-    borderBottomStyle: 'solid',
-    borderColor: '#E1E1E1',
-    textAlign: 'justify'
-  };
-
-  btnStyles = {
-    fontSize: '20px',
-    width: '50px',
-    borderBottom: '1px',
-    borderBottomStyle: 'solid',
-    borderColor: '#E1E1E1'
-  };
 
   constructor(
     private formStorageService: FormStorageService,
@@ -76,8 +60,6 @@ export class OrderComponent implements OnInit {
       isAnimated: true,
       adaptivePosition: true
     };
-
-
   }
 
   ngOnInit() {
@@ -108,13 +90,67 @@ export class OrderComponent implements OnInit {
     this.orderCalculate();
   }
 
-  removeRow(index: number) {
-    const row = this.basketGrid.getRowByIndex(index);
-    row.delete();
+  editHandler({ sender, rowIndex, dataItem }) {
+    this.closeEditor(sender);
+
+    this.productForm = new FormGroup({
+      Quantities: new FormControl(dataItem.Quantities, [
+        Validators.required,
+        Validators.min(0)
+      ]),
+      Price: new FormControl(dataItem.Price, [
+        Validators.required,
+        Validators.min(0)
+      ]),
+      EtaFrom: new FormControl(dataItem.EtaFrom, [Validators.required]),
+      EtaTo: new FormControl(dataItem.EtaTo, [Validators.required]),
+
+      CustomerSku: new FormControl(dataItem.CustomerSku, Validators.required),
+      SpecialInstructions: new FormControl(
+        dataItem.SpecialInstructions,
+        Validators.required
+      )
+    });
+
+    this.editedRowIndex = rowIndex;
+
+    sender.editRow(rowIndex, this.productForm);
+  }
+
+  cancelHandler({ sender, rowIndex }) {
+    this.closeEditor(sender, rowIndex);
+  }
+
+  saveHandler({ sender, rowIndex, formGroup }) {
+    const product: Product = formGroup.value;
+    this.order.products[rowIndex].Quantities = product.Quantities;
+    this.order.products[rowIndex].Price = product.Price;
+    this.order.products[rowIndex].CustomerSku = product.CustomerSku;
+    this.order.products[rowIndex].SpecialInstructions = product.SpecialInstructions;
+    // this.order.products[rowIndex].EtaFrom = product.EtaFrom;
+    // this.order.products[rowIndex].EtaTo = product.EtaTo;
+
+    console.log(this.order.products[rowIndex]);
+
+    sender.closeRow(rowIndex);
+    this.orderCalculate();
+  }
+
+  removeHandler({ dataItem }) {
+    this.order.products = this.order.products.filter(
+      prod => prod.id !== dataItem.id
+    );
+    this.orderCalculate();
+  }
+
+  closeEditor(grid, rowIndex = this.editedRowIndex) {
+    grid.closeRow(rowIndex);
+    this.editedRowIndex = undefined;
+    this.productForm = undefined;
   }
 
   // ---------------------------------------------------------------------------------------------------------------
-    // You have to count totalPares totalCases and total price and set them for order
+  // You have to count totalPares totalCases and total price and set them for order
 
   orderCalculate() {
     let totalCases = 0;
@@ -123,25 +159,22 @@ export class OrderComponent implements OnInit {
     let tmp: any;
     this.order.products.map(prod => (totalPares += prod.sizeRun.totalPairs));
     this.order.products.map(prod => (totalCases += prod.quantities));
-    this.order.products.map(prod => (price += (prod.quantities * prod.price)));
+    this.order.products.map(prod => (price += prod.quantities * prod.price));
 
     this.order.totalPares = totalPares;
     this.order.totalCases = totalCases;
 
     tmp = Number.parseFloat(price.toString()).toFixed(2);
-    console.log(tmp);
 
     this.order.total = +tmp;
-    console.log(this.order.total);
+
     if (tmp.length === 2) {
-      console.log(tmp.length);
+
       if (tmp[1].length === 1) {
         tmp = Number.parseFloat(price.toString()).toFixed(2) + '0';
         this.order.total = +tmp;
       }
     }
-
-
 
     //this.order.total =  +Number.parseFloat(price.toString()).toFixed(2);
   }
@@ -176,20 +209,24 @@ export class OrderComponent implements OnInit {
     }
   }
 
-
   onSubmit() {
-
     let submit = true;
     if (this.order.billingAddress.street1 === undefined) {
-      this.alertify.error('To create an Order you have to select Billing Address.');
+      this.alertify.error(
+        'To create an Order you have to select Billing Address.'
+      );
       submit = false;
     }
     if (this.order.products.length === 0) {
-      this.alertify.error('To create an Order at least one Product has to be selected!.');
+      this.alertify.error(
+        'To create an Order at least one Product has to be selected!.'
+      );
       submit = false;
     }
     if (this.order.salesPerson === undefined) {
-      this.alertify.error('To create an Order please select Sale Representative!.');
+      this.alertify.error(
+        'To create an Order please select Sale Representative!.'
+      );
       submit = false;
     }
 
@@ -212,8 +249,7 @@ export class OrderComponent implements OnInit {
     this.curCustomer = new Customer();
     this.curCustomer.addresses = new Array<Address>();
     this.localTotal = '';
-   }
-
+  }
 
   onSalesPersonChanged(code: string) {
     this.code = code;

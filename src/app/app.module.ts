@@ -5,15 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { IgxGridModule, IgxAvatarModule } from 'igniteui-angular';
-
 import { AgGridModule } from 'ag-grid-angular';
 
-
-
+import { GridModule } from '@progress/kendo-angular-grid';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 import { ModalModule, BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
-
 
 import { AppComponent } from './app.component';
 import { OrderComponent } from './order/order.component';
@@ -47,8 +44,9 @@ import { AddressComponent } from './forms/address/address.component';
       ModalModule.forRoot(),
       BsDatepickerModule.forRoot(),
       AlertModule.forRoot(),
-      IgxGridModule,
-      IgxAvatarModule
+
+      GridModule,
+      DateInputsModule
    ],
    providers: [
       FormStorageService

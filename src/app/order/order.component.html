@@ -1,19 +1,19 @@
 <div class="container container-xs">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <h1 style="margin-bottom: 60px; font-size: 30px;">New Order</h1>
+    <div class="col-xs-12 col-sm-12 col-md-12" style="padding: 0px;">
+      <h1 style="margin-bottom: 60px; font-size: 30px; font-weight: bold;">New Order</h1>
     </div>
   </div>
 
   <!-- Top buttons -->
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
       <div class="row">
         <div class="form-horizontal">
           <div class="form-group">
-            <label class="col-xs-4 col-sm-3 col-md-3 control-label">Customer</label>
-            <div class="col-xs-4 col-sm-5 col-md-5">
+            <label class="col-xs-4 col-sm-4 col-md-4 control-label" style="text-align: left;">Customer</label>
+            <div class="col-xs-4 col-sm-4 col-md-4 btn-padding-left">
               <app-customer-select class="pull-left" (selectedCustomer)="onSelectedCustomer($event)">
               </app-customer-select>
             </div>
@@ -38,55 +38,55 @@
 
             <div class="form-group">
               <div class="col-xs-12 col-sm-12 col-md-12">
-                <h4 class="text-center">Bill To</h4>
+                <h4 style="font-size: 20px; font-weight: bold;">Bill To</h4>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 control-label" for="company_name">Company Name</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="company_name">Company</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.companyName}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 control-label" for="dba">DBA</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="dba">DBA</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.dba}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 control-label" for="address1">Address 1</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="address1">Address 1</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.billingAddress.street1}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="address2">Address 2</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="address2">Address 2</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.billingAddress.street2}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="city">City</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="city">City</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.billingAddress.city}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="state">State</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="state">State</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.billingAddress.country}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="zip">ZIP</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="zip">ZIP</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.billingAddress.postcode}}</span>
               </div>
             </div>
@@ -98,11 +98,11 @@
       <!-- centre -->
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="row">
-          <div class="form-horizontal">
+          <div class="form-horizontal centre-container-padding-left">
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="shipVia">Ship Via</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="shipVia">Ship Via</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <input type="text" class="form-control" id="shipVia" placeholder="e.g container"
                   formControlName="shipVia">
                 <span *ngIf="!orderForm.get('shipVia').valid && orderForm.get('shipVia').touched"
@@ -112,8 +112,8 @@
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">Ship To</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Ship To</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <select class="form-control" (change)="onChangeSippingAddress($event.target.value)">
                   <option [value]="i" *ngFor="let address of curCustomer.addresses; let i = index">
                     {{address.street1 +', '+ address.city +', '+ address.country +', '+ address.postcode}}
@@ -123,43 +123,43 @@
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">Company Name</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Company</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.companyName}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">Address 1</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Address 1</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.sippingAddress.street1}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">Address 2</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Address 2</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.sippingAddress.street2}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">City</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">City</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.sippingAddress.city}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">State</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">State</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.sippingAddress.country}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label">ZIP</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">ZIP</label>
+              <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control">{{order.sippingAddress.postcode}}</span>
               </div>
             </div>
@@ -171,11 +171,11 @@
       <!-- right -->
       <div class="col-xs-12 col-sm-12 col-md-4">
         <div class="row">
-          <div class="form-horizontal">
+          <div class="form-horizontal right-container-padding-left">
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="sales_person">Sales Rep.</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="sales_person" style="text-align: left;">Sales Rep.</label>
+              <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="btn-group" data-toggle="buttons">
                   <label class="btn btn-primary" *ngFor="let person of salesPersons;"
                     (click)="onSalesPersonChanged(person.code)">
@@ -187,8 +187,8 @@
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="orderTaken">Order Taken By</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="orderTaken" style="text-align: left;">Order Taken By</label>
+              <div class="col-xs-8 col-sm-8 col-md-8">
                 <select id="orderTaken" class="form-control" formControlName="orderTaken">
                   <option [value]="option" *ngFor="let option of orderOption; let i = index">
                     {{option}}
@@ -201,8 +201,8 @@
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-sm-4 col-sm-4 control-label" for="show_code">Show Code</label>
-              <div class="col-xs-8 col-sm-8 col-sm-8">
+              <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="show_code" style="text-align: left;">Show Code</label>
+              <div class="col-xs-8 col-sm-8 col-md-8">
                 <span class="form-control">{{code}}</span>
               </div>
             </div>
@@ -220,7 +220,7 @@
             <div class="col-xs-4 col-sm-2 col-md-2">
               <div class="form-group">
                 <label class="control-label" for="orderNumber">Order Number</label>
-                <div class="col-xs-8 col-sm-8 col-sm-8"></div>
+                <div class="col-xs-8 col-sm-8 col-md-8"></div>
                 <input type="text" class="form-control" id="orderNumber" formControlName="orderNumber"
                   placeholder="order number">
                 <span *ngIf="!orderForm.get('orderNumber').valid && orderForm.get('orderNumber').touched"
@@ -274,7 +274,7 @@
 
       <!-- products -->
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="row">
 
             <div class="col-xs-6 col-sm-3 col-md-3">
@@ -306,7 +306,6 @@
                 <label class="sr-only" for="total">Total (in dollars)</label>
                 <div class="input-group">
                   <div class="input-group-addon">$</div>
-                  <!-- <input type="text" class="form-control" id="total" [value]="" readonly placeholder="Total"> -->
                   <span class="form-control">{{localTotal}}</span>
                   <div class="input-group-addon">.00</div>
                 </div>
@@ -317,105 +316,76 @@
         </div>
       </div>
 
-      <!-- table -->
+      <!-- Products -->
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12" style="height: 300px;">
 
-          <igx-grid #basketGrid id="basketGrid" [data]="this.order.products" width="auto" primaryKey="Id" height="400px"
-            style="margin: auto; font-size: large;" [emptyGridMessage]="'Select the Products'">
-
-            <igx-column field="Image" header="Image" width="100px" [cellStyles]="cellStyles">
-              <ng-template igxCell let-cell="cell">
-                <div class="cell__inner_2">
-                  <span>
-                    <img [src]="cell.value" class="flag" />
-                  </span>
-                </div>
+          <kendo-grid  #grid 
+            [data]="this.order.products"
+            style="width: auto"
+            [style.height.%]="100"
+            scrollable="virtual"
+            (edit)="editHandler($event)" (cancel)="cancelHandler($event)"
+            (save)="saveHandler($event)" (remove)="removeHandler($event)"
+          >
+            <kendo-grid-column title="IMAGE" width="50px">
+              <ng-template kendoGridCellTemplate let-dataItem>
+                  <img src="{{dataItem.Image}}" height="40" width="40"alt="Image"/>                    
               </ng-template>
-            </igx-column>
+            </kendo-grid-column>  
 
-            <igx-column field="Sku" header="SKU" [cellStyles]="cellStyles" [dataType]="'string'" width="100px">
-            </igx-column>
+            <kendo-grid-column field="Sku" title="SKU" width="100px" class="cell-control"></kendo-grid-column>
+            <kendo-grid-column field="Quantities" editor="numeric" title="QUANTITIES" width="100px" class="cell-control"></kendo-grid-column>
+            <kendo-grid-column field="Color" title="COLOR" width="100px" class="cell-control"></kendo-grid-column>
+            <kendo-grid-column field="Run" title="RUN" width="100px" class="cell-control"></kendo-grid-column>
+            <kendo-grid-column field="Price" editor="numeric" title="PRICE" width="100px" class="cell-control"></kendo-grid-column>
 
-            <igx-column field="Quantities" header="QUANTITIES" [cellStyles]="cellStyles" dataType="number"
-              [editable]="true" width="100px">
-              <ng-template igxCellEditor let-cell="cell" let-column="cellStyles">
-                <input type="number" [(ngModel)]="cell.editValue" [ngModelOptions]="{standalone: true}"
-                  class="cell-control" (change)="orderCalculate()" min="0"/>
+            <kendo-grid-column field="EtaFrom" title="ETA FROM" format="yyyy-MM-dd" width="130px">
+              <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+                <input type="text" [(ngModel)]="dataItem.EtaFrom" [ngModelOptions]="{standalone: true}" bsDatepicker [bsConfig]="bsConfig" class="cell-control"/>
               </ng-template>
-            </igx-column>
+            </kendo-grid-column>
 
-            <igx-column field="Color" header="COLOR" [cellStyles]="cellStyles" [dataType]="'string'" width="100px">
-            </igx-column>
-
-            <igx-column field="Run" header="RUN" [cellStyles]="cellStyles" [dataType]="'string'" width="70px">
-            </igx-column>
-
-            <igx-column field="Price" header="PRICE" [cellStyles]="cellStyles" dataType="number" [editable]="true"
-              width="120px">
-              <ng-template igxCellEditor let-cell="cell">
-                <input type="number" [(ngModel)]="cell.editValue" [ngModelOptions]="{standalone: true}" min="0"
-                  class="cell-control" />
+            <kendo-grid-column field="EtaTo" title="ETA TO" format="yyyy-MM-dd" width="130px">
+              <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+                <input type="text" [(ngModel)]="dataItem.EtaTo" [ngModelOptions]="{standalone: true}" bsDatepicker [bsConfig]="bsConfig" class="cell-control"/>
               </ng-template>
-            </igx-column>
+            </kendo-grid-column>
 
-            <igx-column field="Pares" header="PARES" [cellStyles]="cellStyles" dataType="number" [editable]="true"
-              width="120px">
-              <ng-template igxCellEditor let-cell="cell">
-                <input type="number" [(ngModel)]="cell.editValue" [ngModelOptions]="{standalone: true}" min="0"
-                  class="cell-control" />
+            <kendo-grid-column field="CustomerSku" editor="text" title="CUSTOMER SKU" width="100px" class="cell-control"></kendo-grid-column>
+            <kendo-grid-column field="SpecialInstructions" editor="text" title="SPECIAL INSTRUCTIONS" width="120px" class="cell-control"></kendo-grid-column>
+
+            <kendo-grid-command-column width="80px">
+              <ng-template kendoGridCellTemplate>
+
+                  <button kendoGridEditCommand>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                  </button>  
+
+                  <button kendoGridRemoveCommand>
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
+
+                  <button kendoGridSaveCommand [disabled]="productForm?.invalid">
+                    <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                  </button>
+
+                  <button kendoGridCancelCommand>
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                  </button>
+
               </ng-template>
-            </igx-column>
+            </kendo-grid-command-column>
 
-            <igx-column field="EtaFrom" header="ETA from" [cellStyles]="cellStyles" [dataType]="'string'"
-              [editable]="true" width="100px">
-              <ng-template igxCellEditor let-cell="cell">
-                <input type="text" [(ngModel)]="cell.editValue" [ngModelOptions]="{standalone: true}" bsDatepicker
-                  [bsConfig]="bsConfig" class="cell-control" />
-              </ng-template>
-            </igx-column>
+          </kendo-grid>
 
-            <igx-column field="EtaTo" header="ETA to" [cellStyles]="cellStyles" [dataType]="'string'" [editable]="true"
-              width="100px">
-              <ng-template igxCellEditor let-cell="cell">
-                <input type="text" [(ngModel)]="cell.editValue" [ngModelOptions]="{standalone: true}" bsDatepicker
-                  [bsConfig]="bsConfig" class="cell-control" />
-              </ng-template>
-            </igx-column>
-
-            <igx-column field="CustomerSku" header="Customer SKU" [cellStyles]="cellStyles" [dataType]="'string'"
-              [editable]="true">
-              <ng-template igxCellEditor let-cell="cell">
-                <input type="text" [(ngModel)]="cell.editValue" [ngModelOptions]="{standalone: true}"
-                  class="cell-control" />
-              </ng-template>
-            </igx-column>
-
-            <igx-column field="SpecialInstructions" header="Special Instructions" [cellStyles]="cellStyles"
-              [dataType]="'string'" [editable]="true">
-              <ng-template igxCellEditor let-cell="cell">
-                <input type="text" [(ngModel)]="cell.editValue" [ngModelOptions]="{standalone: true}"
-                  class="cell-control" />
-              </ng-template>
-            </igx-column>
-
-            <igx-column [cellStyles]="btnStyles" width="50px">
-              <ng-template igxCell let-cell="cell">
-                <button igxButton="icon" class="close" aria-label="Close" (click)="removeRow(cell.cellID.rowIndex)">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </ng-template>
-            </igx-column>
-
-
-          </igx-grid>
         </div>
       </div>
 
       <!-- bottom line -->
       <div class="row" style="margin-top: 30px;">
-        <div class="col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="row">
 
             <div class="col-xs-12 col-sm-4 col-md-4">
@@ -468,7 +438,6 @@
         </div>
       </div>
 
-      <!-- button Submit-->
       <div class="row" style="margin-top: 30px; margin-bottom: 50px;">
         <div class="col-xs-12 col-sm-12 col-md-12">
           <button type="button" [disabled]="!orderForm.valid" (click)="onSubmit()"
