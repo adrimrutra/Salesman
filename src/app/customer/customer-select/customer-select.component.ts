@@ -27,9 +27,10 @@ export class CustomerSelectComponent implements OnInit {
 
   customers: Customer[];
   subscription: Subscription;
+  isSelected = false;
 
   columnDefs = [
-    { headerName: 'Company Name', field: 'companyName' },
+    { headerName: 'Company', field: 'companyName' },
     { headerName: 'DBA', field: 'dba' },
     { headerName: 'Vat Number', field: 'vatNumber' },
     { headerName: 'Website', field: 'website' },
@@ -76,10 +77,21 @@ export class CustomerSelectComponent implements OnInit {
     this.gridColumnApi = params.columnApi;
   }
 
+  onSelectionChanged(event) {
+    this.isSelected = true;
+    console.log(this.isSelected);
+  }
+  closeModal() {
+    this.modalRef.hide();
+    this.isSelected = false;
+  }
+
   onSelectCustomer() {
     const selectedData = this.gridApi.getSelectedRows();
-    const customer = selectedData[0] as Customer;
-    this.selectedCustomer.emit(customer);
-    this.modalRef.hide();
+    if(selectedData) {
+      const customer = selectedData[0] as Customer;
+      this.selectedCustomer.emit(customer);
+      this.closeModal();
+    }
   }
 }

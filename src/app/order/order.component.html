@@ -45,49 +45,63 @@
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="company_name">Company</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.companyName}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.companyName" required [ngModelOptions]="{standalone: true}" 
+                      id="company_name" readonly placeholder="Company">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="dba">DBA</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.dba}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.dba" required [ngModelOptions]="{standalone: true}" 
+                      id="dba" readonly placeholder="DBA">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="address1">Address 1</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.street1}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.billingAddress.street1" required [ngModelOptions]="{standalone: true}" 
+                      id="address1" readonly placeholder="Address">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="address2">Address 2</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.street2}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.billingAddress.street2" required [ngModelOptions]="{standalone: true}" 
+                      id="address2" readonly placeholder="Address">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="city">City</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.city}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.billingAddress.city" required [ngModelOptions]="{standalone: true}" 
+                      id="city" readonly placeholder="City">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="state">State</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.country}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.billingAddress.country" required [ngModelOptions]="{standalone: true}" 
+                      id="state" readonly placeholder="State">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="zip">ZIP</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.postcode}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.billingAddress.postcode" required [ngModelOptions]="{standalone: true}" 
+                      id="zip" readonly placeholder="ZIP">
               </div>
             </div>
 
@@ -123,44 +137,56 @@
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Company</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="company2">Company</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.companyName}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.companyName" required [ngModelOptions]="{standalone: true}" 
+                      id="company2" readonly placeholder="Company">
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Address 1</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="address1">Address 1</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.street1}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.sippingAddress.street1" required [ngModelOptions]="{standalone: true}" 
+                      id="address1" readonly placeholder="Address">
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Address 2</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="address2">Address 2</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.street2}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.sippingAddress.street2" required [ngModelOptions]="{standalone: true}" 
+                      id="address2" readonly placeholder="Address">
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">City</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="city1">City</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.city}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.sippingAddress.city" required [ngModelOptions]="{standalone: true}" 
+                      id="city1" readonly placeholder="City">
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">State</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="state1">State</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.country}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.sippingAddress.country" required [ngModelOptions]="{standalone: true}" 
+                      id="state1" readonly placeholder="State">
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">ZIP</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="zip1">ZIP</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.postcode}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="order.sippingAddress.postcode" required [ngModelOptions]="{standalone: true}" 
+                      id="zip1" readonly placeholder="ZIP">
               </div>
             </div>
 
@@ -203,7 +229,9 @@
             <div class="form-group">
               <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="show_code" style="text-align: left;">Show Code</label>
               <div class="col-xs-8 col-sm-8 col-md-8">
-                <span class="form-control">{{code}}</span>
+                <input type="text" class="form-control" 
+                      [(ngModel)]="code" required [ngModelOptions]="{standalone: true}" 
+                      id="show_code" readonly placeholder="Show Code">
               </div>
             </div>
 
@@ -408,27 +436,33 @@
             <div class="col-xs-8 col-sm-4 col-md-4">
               <div class="row">
                 <div class="form-group">
-                  <label class="col-xs-6 col-sm-6 col-md-4 control-label">Total Cases</label>
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="total_cases">Total Cases</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                    <span class="form-control">{{order.totalCases}}</span>
+                    <input type="text" class="form-control" 
+                      [(ngModel)]="order.totalCases" required [ngModelOptions]="{standalone: true}" 
+                      id="total_cases" readonly placeholder="Total Cases">
                   </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group">
-                  <label class="col-xs-6 col-sm-6 col-md-4 control-label">Total Pares</label>
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="total_pares">Total Pares</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                    <span class="form-control">{{order.totalPares}}</span>
+                    <input type="text" class="form-control" 
+                    [(ngModel)]="order.totalPares" required [ngModelOptions]="{standalone: true}" 
+                    id="total_pares" readonly placeholder="Total Pares">
                   </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group">
-                  <label class="col-xs-6 col-sm-6 col-md-4 control-label">Total</label>
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="total">Total</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                    <span class="form-control">{{order.total}}</span>
+                    <input type="text" class="form-control" 
+                    [(ngModel)]="order.total" required [ngModelOptions]="{standalone: true}" 
+                    id="total" readonly placeholder="Total">
                   </div>
                 </div>
               </div>

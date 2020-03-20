@@ -65,5 +65,273 @@
         "billing": true
       }
     ]
+  },
+  {
+    "id": 2,
+    "companyName": "Company Inc.",
+    "dba": "My optional DBA Name",
+    "vatNumber": "1234ABCDEF",
+    "website": "www.mysite.com",
+    "email": "info@mysite.com",
+    "phoneCell": "+112335928912",
+    "phoneLandline": "+112335928912",
+    "salesperson1": {
+      "code": "008",
+      "firstName": "Mark",
+      "lastName": "Smith"
+    },
+    "salesperson2": {
+      "code": "009",
+      "firstName": "Mark",
+      "lastName": "Smith"
+    },
+    "notes": "Optional notes",
+    "addresses": [
+      {
+        "street1": "Shipping Just a road..",
+        "street2": "Shipping This is not mandatory",
+        "city": "Shipping New York City",
+        "postcode": "123456",
+        "state": "New York",
+        "country": "US",
+        "paymentTerms": "30 Net Days",
+        "shippingPreference": "FedEx",
+        "shippingPreferenceAccount": "123456789",
+        "shippingInstructions": "Optional notes about the shipping",
+        "contact": {
+          "firstName": "Steve",
+          "lastLame": "Smith",
+          "email": "steve@mycompany.com",
+          "phoneCell": "+112335928912",
+          "phoneLandline": "+112335928912",
+          "fax": "+112335928912",
+          "isResidence": false
+        },
+        "billing": false
+      },
+      {
+        "street1": "Billing a road..",
+        "street2": "Billing is not mandatory",
+        "city": "New York City",
+        "postcode": "55555",
+        "state": "New York",
+        "country": "US",
+        "paymentTerms": "30 Net Days",
+        "shippingPreference": "FedEx",
+        "shippingPreferenceAccount": "987654321",
+        "shippingInstructions": "Optional notes about the shipping",
+        "contact": {
+          "firstName": "Steve",
+          "lastName": "Smith",
+          "email": "steve@mycompany.com",
+          "phoneCell": "+112335928912",
+          "phoneLandline": "+112335928912",
+          "fax": "+112335928912",
+          "isResidence": true
+        },
+        "billing": true
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "companyName": "Company Inc.",
+    "dba": "My optional DBA Name",
+    "vatNumber": "1234ABCDEF",
+    "website": "www.mysite.com",
+    "email": "info@mysite.com",
+    "phoneCell": "+112335928912",
+    "phoneLandline": "+112335928912",
+    "salesperson1": {
+      "code": "008",
+      "firstName": "Mark",
+      "lastName": "Smith"
+    },
+    "salesperson2": {
+      "code": "009",
+      "firstName": "Mark",
+      "lastName": "Smith"
+    },
+    "notes": "Optional notes",
+    "addresses": [
+      {
+        "street1": "Shipping Just a road..",
+        "street2": "Shipping This is not mandatory",
+        "city": "Shipping New York City",
+        "postcode": "123456",
+        "state": "New York",
+        "country": "US",
+        "paymentTerms": "30 Net Days",
+        "shippingPreference": "FedEx",
+        "shippingPreferenceAccount": "123456789",
+        "shippingInstructions": "Optional notes about the shipping",
+        "contact": {
+          "firstName": "Steve",
+          "lastLame": "Smith",
+          "email": "steve@mycompany.com",
+          "phoneCell": "+112335928912",
+          "phoneLandline": "+112335928912",
+          "fax": "+112335928912",
+          "isResidence": false
+        },
+        "billing": false
+      },
+      {
+        "street1": "Billing a road..",
+        "street2": "Billing is not mandatory",
+        "city": "New York City",
+        "postcode": "55555",
+        "state": "New York",
+        "country": "US",
+        "paymentTerms": "30 Net Days",
+        "shippingPreference": "FedEx",
+        "shippingPreferenceAccount": "987654321",
+        "shippingInstructions": "Optional notes about the shipping",
+        "contact": {
+          "firstName": "Steve",
+          "lastName": "Smith",
+          "email": "steve@mycompany.com",
+          "phoneCell": "+112335928912",
+          "phoneLandline": "+112335928912",
+          "fax": "+112335928912",
+          "isResidence": true
+        },
+        "billing": true
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "companyName": "Company Inc.",
+    "dba": "My optional DBA Name",
+    "vatNumber": "1234ABCDEF",
+    "website": "www.mysite.com",
+    "email": "info@mysite.com",
+    "phoneCell": "+112335928912",
+    "phoneLandline": "+112335928912",
+    "salesperson1": {
+      "code": "008",
+      "firstName": "Mark",
+      "lastName": "Smith"
+    },
+    "salesperson2": {
+      "code": "009",
+      "firstName": "Mark",
+      "lastName": "Smith"
+    },
+    "notes": "Optional notes",
+    "addresses": [
+      {
+        "street1": "Shipping Just a road..",
+        "street2": "Shipping This is not mandatory",
+        "city": "Shipping New York City",
+        "postcode": "123456",
+        "state": "New York",
+        "country": "US",
+        "paymentTerms": "30 Net Days",
+        "shippingPreference": "FedEx",
+        "shippingPreferenceAccount": "123456789",
+        "shippingInstructions": "Optional notes about the shipping",
+        "contact": {
+          "firstName": "Steve",
+          "lastLame": "Smith",
+          "email": "steve@mycompany.com",
+          "phoneCell": "+112335928912",
+          "phoneLandline": "+112335928912",
+          "fax": "+112335928912",
+          "isResidence": false
+        },
+        "billing": false
+      },
+      {
+        "street1": "Billing a road..",
+        "street2": "Billing is not mandatory",
+        "city": "New York City",
+        "postcode": "55555",
+        "state": "New York",
+        "country": "US",
+        "paymentTerms": "30 Net Days",
+        "shippingPreference": "FedEx",
+        "shippingPreferenceAccount": "987654321",
+        "shippingInstructions": "Optional notes about the shipping",
+        "contact": {
+          "firstName": "Steve",
+          "lastName": "Smith",
+          "email": "steve@mycompany.com",
+          "phoneCell": "+112335928912",
+          "phoneLandline": "+112335928912",
+          "fax": "+112335928912",
+          "isResidence": true
+        },
+        "billing": true
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "companyName": "Company Inc.",
+    "dba": "My optional DBA Name",
+    "vatNumber": "1234ABCDEF",
+    "website": "www.mysite.com",
+    "email": "info@mysite.com",
+    "phoneCell": "+112335928912",
+    "phoneLandline": "+112335928912",
+    "salesperson1": {
+      "code": "008",
+      "firstName": "Mark",
+      "lastName": "Smith"
+    },
+    "salesperson2": {
+      "code": "009",
+      "firstName": "Mark",
+      "lastName": "Smith"
+    },
+    "notes": "Optional notes",
+    "addresses": [
+      {
+        "street1": "Shipping Just a road..",
+        "street2": "Shipping This is not mandatory",
+        "city": "Shipping New York City",
+        "postcode": "123456",
+        "state": "New York",
+        "country": "US",
+        "paymentTerms": "30 Net Days",
+        "shippingPreference": "FedEx",
+        "shippingPreferenceAccount": "123456789",
+        "shippingInstructions": "Optional notes about the shipping",
+        "contact": {
+          "firstName": "Steve",
+          "lastLame": "Smith",
+          "email": "steve@mycompany.com",
+          "phoneCell": "+112335928912",
+          "phoneLandline": "+112335928912",
+          "fax": "+112335928912",
+          "isResidence": false
+        },
+        "billing": false
+      },
+      {
+        "street1": "Billing a road..",
+        "street2": "Billing is not mandatory",
+        "city": "New York City",
+        "postcode": "55555",
+        "state": "New York",
+        "country": "US",
+        "paymentTerms": "30 Net Days",
+        "shippingPreference": "FedEx",
+        "shippingPreferenceAccount": "987654321",
+        "shippingInstructions": "Optional notes about the shipping",
+        "contact": {
+          "firstName": "Steve",
+          "lastName": "Smith",
+          "email": "steve@mycompany.com",
+          "phoneCell": "+112335928912",
+          "phoneLandline": "+112335928912",
+          "fax": "+112335928912",
+          "isResidence": true
+        },
+        "billing": true
+      }
+    ]
   }
 ]

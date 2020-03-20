@@ -1,12 +1,10 @@
 <button type="button" class="btn btn-info" (click)="openModal(template)">Select Customer</button>
-
 <br>
-
 <ng-template #template>
 
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Create Customer</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <h4 class="modal-title pull-left">Select Customer</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -14,22 +12,21 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-
           <ag-grid-angular #agGrid style="width: auto; height: 500px;" class="ag-theme-balham" [rowData]="rowData"
-            [columnDefs]="columnDefs" rowSelection='single' (gridReady)="onGridReady($event)">
+            [columnDefs]="columnDefs" rowSelection='single' (gridReady)="onGridReady($event)"
+            (selectionChanged)="onSelectionChanged($event)">
           </ag-grid-angular>
-
         </div>
       </div>
       <div class="row" style="margin-top: 20px;">
         <div class="form-group">
           <div class="col-md-6">
             
-            <button type="button" class="btn btn-danger pull-left" (click)="modalRef.hide()">Cancel</button>
+            <button type="button" class="btn btn-danger pull-left" (click)="closeModal()">Cancel</button>
           </div>
           <div class="col-md-6">
            
-            <button type="button" class="btn btn-success pull-right" (click)="onSelectCustomer()">Select</button>
+            <button type="button" class="btn btn-success pull-right" [disabled]="!isSelected" (click)="onSelectCustomer()">Select</button>
           </div>
 
         </div>
