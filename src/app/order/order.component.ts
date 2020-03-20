@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -113,7 +113,6 @@ export class OrderComponent implements OnInit {
     });
 
     this.editedRowIndex = rowIndex;
-
     sender.editRow(rowIndex, this.productForm);
   }
 
@@ -127,10 +126,6 @@ export class OrderComponent implements OnInit {
     this.order.products[rowIndex].Price = product.Price;
     this.order.products[rowIndex].CustomerSku = product.CustomerSku;
     this.order.products[rowIndex].SpecialInstructions = product.SpecialInstructions;
-    // this.order.products[rowIndex].EtaFrom = product.EtaFrom;
-    // this.order.products[rowIndex].EtaTo = product.EtaTo;
-
-    console.log(this.order.products[rowIndex]);
 
     sender.closeRow(rowIndex);
     this.orderCalculate();
@@ -156,7 +151,6 @@ export class OrderComponent implements OnInit {
     let totalCases = 0;
     let totalPares = 0;
     let price = 0;
-    let tmp: any;
     this.order.products.map(prod => (totalPares += prod.sizeRun.totalPairs));
     this.order.products.map(prod => (totalCases += prod.quantities));
     this.order.products.map(prod => (price += prod.quantities * prod.price));
@@ -164,24 +158,8 @@ export class OrderComponent implements OnInit {
     this.order.totalPares = totalPares;
     this.order.totalCases = totalCases;
 
-    tmp = Number.parseFloat(price.toString()).toFixed(2);
-
-    this.order.total = +tmp;
-
-    if (tmp.length === 2) {
-
-      if (tmp[1].length === 1) {
-        tmp = Number.parseFloat(price.toString()).toFixed(2) + '0';
-        this.order.total = +tmp;
-      }
-    }
-
-    //this.order.total =  +Number.parseFloat(price.toString()).toFixed(2);
+    this.order.total = +Number.parseFloat(price.toString()).toFixed(2) ;
   }
-
-  // round(value, decimals) {
-  //   return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
-  // }
 
   onSelectedCustomer(customer: Customer) {
     this.curCustomer = customer;
@@ -256,8 +234,8 @@ export class OrderComponent implements OnInit {
     this.order.salesPerson = this.salesPersons.find(man => man.code === code);
   }
 
-  onThumbnail(id: any) {
-    this.order.products = this.order.products.filter(prod => prod.id !== id);
-    this.orderCalculate();
-  }
+  // onThumbnail(id: any) {
+  //   this.order.products = this.order.products.filter(prod => prod.id !== id);
+  //   this.orderCalculate();
+  // }
 }
