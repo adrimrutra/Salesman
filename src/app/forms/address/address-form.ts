@@ -1,17 +1,17 @@
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Address } from 'src/app/_models/customer/Address';
 
 export class AddressForm {
-  street1 = new FormControl(null, Validators.required);
-  street2 = new FormControl(null, Validators.required);
-  city = new FormControl(null, Validators.required);
-  state = new FormControl(null, Validators.required);
-  postcode = new FormControl(null, Validators.required);
-  country = new FormControl(null, Validators.required);
-  paymentTerms = new FormControl(null, Validators.required);
-  shippingPreference = new FormControl(null, Validators.required);
-  shippingPreferenceAccount = new FormControl(null, Validators.required);
-  shippingInstructions = new FormControl(null, Validators.required);
+  street1 = new FormControl('', Validators.required);
+  street2 = new FormControl('', Validators.required);
+  city = new FormControl('', Validators.required);
+  state = new FormControl('', Validators.required);
+  postcode = new FormControl('', Validators.required);
+  country = new FormControl('', Validators.required);
+  paymentTerms = new FormControl('', Validators.required);
+  shippingPreference = new FormControl('', Validators.required);
+  shippingPreferenceAccount = new FormControl('', Validators.required);
+  shippingInstructions = new FormControl('', Validators.required);
   billing = new FormControl(false);
   constructor(address: Address) {
     this.street1.setValue(address.street1);

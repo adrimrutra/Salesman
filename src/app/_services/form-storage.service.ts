@@ -7,11 +7,12 @@ import { HttpClient } from '@angular/common/http';
 import { SalesPerson } from '../_models/SalesPerson';
 import { Order } from '../_models/Order';
 import { Product } from '../_models/Product';
+import { AlertifyService } from './alertify.service';
 
 @Injectable()
 export class FormStorageService {
 
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient, private alertify: AlertifyService) { }
   products: Product[];
   customers: Customer[];
   salesRep: SalesPerson[];
@@ -36,10 +37,12 @@ constructor(private http: HttpClient) { }
 
   addCustomer(customer: Customer) {
     console.log(customer);
+    this.alertify.success('Customer was successfully created!.');
   }
 
   addOrder(order: Order) {
     console.log(order);
+    this.alertify.success('Order was successfully created!.');
   }
 
 }

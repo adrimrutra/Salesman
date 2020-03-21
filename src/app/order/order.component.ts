@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ViewChildren,
+  QueryList,
+  ViewContainerRef
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -17,8 +25,6 @@ import {
   getOrderTypeOption,
   getOrderTermsOption
 } from '../commons/common';
-import { AlertifyService } from '../_services/alertify.service';
-
 
 @Component({
   selector: 'app-order',
@@ -26,31 +32,30 @@ import { AlertifyService } from '../_services/alertify.service';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
+  @ViewChild('showTotal', { static: false }) showTotal: ElementRef;
+  // @ViewChildren('sales', { read: ElementRef }) sales: QueryList<ViewContainerRef>;
+  @ViewChildren('sales', { read: ElementRef }) sales: QueryList<ElementRef>;
+ 
   orderForm: FormGroup;
-  customers: Array<Customer>;
   curCustomer: Customer;
   salesPersons: Array<SalesPerson>;
   order: Order;
-  code: string;
   orderTermsOption: Array<string>;
   orderOption: Array<string>;
   orderTypeOption: Array<string>;
   localTotal: any;
-  isNewCustomer = false;
-
   bsConfig: any;
 
   productForm: FormGroup;
   editedRowIndex: number;
   editedProduct: Product;
-
+  isCustomer = false;
 
   constructor(
     private formStorageService: FormStorageService,
-    private formBuilder: FormBuilder,
-    private alertify: AlertifyService
+    private formBuilder: FormBuilder
   ) {
-    this.resetForm();
+
     this.orderTermsOption = getOrderTermsOption();
     this.orderOption = getOrderOption();
     this.orderTypeOption = getOrderTypeOption();
@@ -63,15 +68,14 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formStorageService.getCustomers().subscribe(customers => {
-      this.customers = customers;
-    });
-
     this.formStorageService.getSalesPersons().subscribe(data => {
       this.salesPersons = data;
     });
 
     this.orderForm = this.formBuilder.group({
+      isCustomer: new FormControl(false),
+      salesPerson: new FormControl(false),
+      showCode: new FormControl('', Validators.required),
       orderTaken: new FormControl('', Validators.required),
       orderNumber: new FormControl('', Validators.required),
       dateSold: new FormControl('', Validators.required),
@@ -81,8 +85,12 @@ export class OrderComponent implements OnInit {
       dept: new FormControl('', Validators.required),
       orderType: new FormControl('', Validators.required),
       shipEarly: new FormControl(false),
-      orderComments: new FormControl('')
+      orderComments: new FormControl(''),
+      totalCases: new FormControl('', Validators.required),
+      totalPairs: new FormControl('', Validators.required),
+      total: new FormControl('', Validators.required)
     });
+    this.resetForm();
   }
 
   onSelectedProducts(products: Array<Product>) {
@@ -104,7 +112,6 @@ export class OrderComponent implements OnInit {
       ]),
       EtaFrom: new FormControl(dataItem.EtaFrom, [Validators.required]),
       EtaTo: new FormControl(dataItem.EtaTo, [Validators.required]),
-
       CustomerSku: new FormControl(dataItem.CustomerSku, Validators.required),
       SpecialInstructions: new FormControl(
         dataItem.SpecialInstructions,
@@ -126,7 +133,6 @@ export class OrderComponent implements OnInit {
     this.order.products[rowIndex].Price = product.Price;
     this.order.products[rowIndex].CustomerSku = product.CustomerSku;
     this.order.products[rowIndex].SpecialInstructions = product.SpecialInstructions;
-
     sender.closeRow(rowIndex);
     this.orderCalculate();
   }
@@ -144,26 +150,43 @@ export class OrderComponent implements OnInit {
     this.productForm = undefined;
   }
 
-  // ---------------------------------------------------------------------------------------------------------------
-  // You have to count totalPares totalCases and total price and set them for order
-
   orderCalculate() {
-    let totalCases = 0;
-    let totalPares = 0;
-    let price = 0;
-    this.order.products.map(prod => (totalPares += prod.sizeRun.totalPairs));
-    this.order.products.map(prod => (totalCases += prod.quantities));
-    this.order.products.map(prod => (price += prod.quantities * prod.price));
+    if (this.order.products.length > 0) {
+      let cases = 0;
+      let pairs = 0;
+      let price = 0;
+      this.order.products.map(prod => (pairs += prod.sizeRun.totalPairs));
+      this.order.products.map(prod => (cases += prod.quantities));
+      this.order.products.map(prod => (price += prod.quantities * prod.price));
 
-    this.order.totalPares = totalPares;
-    this.order.totalCases = totalCases;
+      this.order.totalPairs = pairs;
+      this.order.totalCases = cases;
+      this.order.total = +Number.parseFloat(price.toString()).toFixed(2);
 
-    this.order.total = +Number.parseFloat(price.toString()).toFixed(2) ;
+      this.orderForm.patchValue({
+        totalCases: this.order.totalCases,
+        totalPairs: this.order.totalPairs,
+        total: Number.parseFloat(price.toString()).toFixed(2)
+      });
+
+      if (this.showTotal.nativeElement.checked) {
+        this.localTotal = Number.parseFloat(price.toString()).toFixed(2);
+      }
+
+    } else {
+      this.orderForm.patchValue({
+        totalCases: '',
+        totalPairs: '',
+        total: ''
+      });
+
+      this.localTotal = '';
+    }
   }
 
   onSelectedCustomer(customer: Customer) {
     this.curCustomer = customer;
-    if (this.customers !== null) {
+    if (this.curCustomer !== null) {
       this.order.companyName = this.curCustomer.companyName;
       this.order.dba = this.curCustomer.dba;
       this.order.billingAddress = this.curCustomer.addresses.find(
@@ -172,6 +195,10 @@ export class OrderComponent implements OnInit {
       this.order.sippingAddress = this.curCustomer.addresses.find(
         address => !address.billing
       );
+
+      this.orderForm.patchValue({
+        isCustomer: true
+      });
     }
   }
 
@@ -179,43 +206,13 @@ export class OrderComponent implements OnInit {
     this.order.sippingAddress = this.curCustomer.addresses[index];
   }
 
-  onShowTotal(event) {
-    if (event.target.checked) {
-      this.localTotal = this.order.total;
-    } else {
-      this.localTotal = '';
-    }
-  }
-
   onSubmit() {
-    let submit = true;
-    if (this.order.billingAddress.street1 === undefined) {
-      this.alertify.error(
-        'To create an Order you have to select Billing Address.'
-      );
-      submit = false;
-    }
-    if (this.order.products.length === 0) {
-      this.alertify.error(
-        'To create an Order at least one Product has to be selected!.'
-      );
-      submit = false;
-    }
-    if (this.order.salesPerson === undefined) {
-      this.alertify.error(
-        'To create an Order please select Sale Representative!.'
-      );
-      submit = false;
-    }
-
-    if (submit) {
-      this.formStorageService.addOrder(
-        transformOrderData(this.orderForm, this.order)
-      );
-      this.orderForm.reset();
-      this.resetForm();
-      this.alertify.success('Order was successfully created!.');
-    }
+    this.formStorageService.addOrder(
+      transformOrderData(this.orderForm, this.order)
+    );
+    this.orderForm.reset();
+    this.resetForm();
+    this.resetSales();
   }
 
   resetForm() {
@@ -229,13 +226,23 @@ export class OrderComponent implements OnInit {
     this.localTotal = '';
   }
 
-  onSalesPersonChanged(code: string) {
-    this.code = code;
-    this.order.salesPerson = this.salesPersons.find(man => man.code === code);
+  resetSales() {
+    this.sales.forEach(element => {
+      element.nativeElement.className = 'btn btn-primary';
+      element.nativeElement.control.checked = false;
+    });
+    this.showTotal.nativeElement.checked = false;
   }
 
-  // onThumbnail(id: any) {
-  //   this.order.products = this.order.products.filter(prod => prod.id !== id);
-  //   this.orderCalculate();
-  // }
+  onShowTotal(event) {
+    (event.target.checked) ? this.orderCalculate() : this.localTotal = '';
+  }
+
+  onSalesPersonChanged(code: string) {
+    this.order.salesPerson = this.salesPersons.find(man => man.code === code);
+
+    this.orderForm.patchValue({
+      showCode: code
+    });
+  }
 }

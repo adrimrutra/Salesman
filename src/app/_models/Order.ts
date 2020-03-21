@@ -12,7 +12,7 @@ export class Order {
   orderComments: string;
   shipEarly: boolean;
   totalCases: number;
-  totalPares: number;
+  totalPairs: number;
   total: number;
   billingAddress: Address;
   sippingAddress: Address;

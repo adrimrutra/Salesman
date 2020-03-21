@@ -47,10 +47,10 @@ export class Product {
     this.specialInstructions = val;
   }
 
-  get Pares() {
+  get Pairs() {
     return this.sizeRun.totalPairs;
   }
-  set Pares(val) {
+  set Pairs(val) {
     this.sizeRun.totalPairs = val;
   }
 

@@ -1,7 +1,8 @@
 <form [formGroup]="addressForm">
   <div class="col-sm-6">
-    <h5 class="pull-left">Address</h5>
-
+    <h5 class="pull-left" style="font-size: 15px; font-weight: bold; margin-bottom: 7px;">
+      Address <span *ngIf="count > 0">{{count}}</span>
+    </h5>
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
@@ -96,9 +97,7 @@
         <div class="form-group">
           <div class="col-sm-12">
             <select id="paymentTerms" class="form-control" formControlName="paymentTerms">
-              <option [value]="term" *ngFor="let term of terms; let i = index">
-                {{term}}
-              </option>
+              <option [value]="term" *ngFor="let term of terms; let i = index">{{term}}</option>
             </select>
           </div>
         </div>
@@ -110,9 +109,7 @@
         <div class="form-group">
           <div class="col-sm-12">
             <select id="shippingPreference" class="form-control" formControlName="shippingPreference">
-              <option [value]="ship" *ngFor="let ship of preference; let i = index">
-                {{ship}}
-              </option>
+              <option [value]="ship" *ngFor="let ship of preference; let i = index">{{ship}}</option>
             </select>
           </div>
         </div>

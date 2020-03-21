@@ -7,8 +7,6 @@ import { transformData } from 'src/app/utils/util';
 import { FormStorageService } from 'src/app/_services/form-storage.service';
 import { SalesPerson } from 'src/app/_models/SalesPerson';
 import { CustomerFormService } from './customer-form.service';
-import { getAddresses } from 'src/app/commons/common';
-import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
   selector: 'app-customer-create',
@@ -16,22 +14,16 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
   styleUrls: ['./customer-create.component.css']
 })
 export class CustomerCreateComponent implements OnInit, OnDestroy {
-  @ViewChild('bsModalRef', { static: true }) bsModalRef: BsModalRef;
+  @ViewChild('modalRef', { static: true }) modalRef: BsModalRef;
   customerForm: FormGroup;
   customerFormSub: Subscription;
-  formInvalid = false;
   addresses: FormArray;
-
   customers: Customer[];
-
   salesPersons: SalesPerson[];
-  terms: string[];
-  preference: string[];
 
   constructor(
     private customerFormService: CustomerFormService,
-    private formStorageService: FormStorageService,
-    private alertify: AlertifyService
+    private formStorageService: FormStorageService
   ) {
     this.formStorageService.getCustomers().subscribe(data => {
       this.customers = data;
@@ -57,6 +49,11 @@ export class CustomerCreateComponent implements OnInit, OnDestroy {
     this.customerFormSub.unsubscribe();
   }
 
+  modalClose() {
+    this.modalRef.hide();
+    this.customerForm.reset();
+  }
+
   addAddress() {
     this.customerFormService.addAddress();
   }
@@ -70,6 +67,5 @@ export class CustomerCreateComponent implements OnInit, OnDestroy {
       transformData(this.customerForm, this.salesPersons)
     );
     this.customerForm.reset();
-    this.alertify.success('Customer was successfully created!.');
   }
 }

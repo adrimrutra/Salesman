@@ -10,6 +10,7 @@ import { getTerms, getPreference } from 'src/app/commons/common';
 export class AddressComponent implements OnInit {
   @Input() addressForm: FormGroup;
   @Input() index: number;
+  @Input() count: number;
   @Output() deleteAddress: EventEmitter<number> = new EventEmitter();
 
   terms = getTerms();

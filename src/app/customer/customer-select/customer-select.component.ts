@@ -79,7 +79,6 @@ export class CustomerSelectComponent implements OnInit {
 
   onSelectionChanged(event) {
     this.isSelected = true;
-    console.log(this.isSelected);
   }
   closeModal() {
     this.modalRef.hide();
@@ -88,7 +87,7 @@ export class CustomerSelectComponent implements OnInit {
 
   onSelectCustomer() {
     const selectedData = this.gridApi.getSelectedRows();
-    if(selectedData) {
+    if (selectedData) {
       const customer = selectedData[0] as Customer;
       this.selectedCustomer.emit(customer);
       this.closeModal();

@@ -17,25 +17,6 @@ export const getPreference = () => {
   return preference;
 };
 
-export const getAddresses = () => {
-  return [
-    {
-      street1: '',
-      street2: '',
-      city: '',
-      state: '',
-      postcode: '',
-      country: '',
-      paymentTerms: '',
-      shippingPreference: '',
-      shippingPreferenceAccount: '',
-      shippingInstructions: '',
-      billing: false
-    }
-  ];
-};
-
-
 export const getOrderOption = () => {
   const option = new Array<string>();
   option.push('Phone');
