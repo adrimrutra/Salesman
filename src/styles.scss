@@ -1,14 +1,10 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
-
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
-
 @import "~minireset.css/minireset";
-
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
-
 @import "~@progress/kendo-theme-bootstrap/dist/all.scss";
 
 
@@ -16,7 +12,7 @@
     color: #d00;
     content: "*";
     position: absolute;
-    margin-left: 5px;
+    margin-left: 3px;
     top:7px;
 }
 
@@ -24,23 +20,18 @@
     color: #d00;
     content: "*";
     position: absolute;
-    margin-left: 5px;
-}
-
-.required:after{ 
-    color: #d00;
-    content: "*";
-    position: absolute;
-    margin-left: 5px;
-    top: -11px;
-    left: 10px;
+    margin-left: 3px;
 }
 
 .help-block{
     color: #d00 !important;
-  }
+}
 
-
+.asterisk {
+    position: absolute;
+    top: 5px;
+    color: #d00; 
+}
 
 
 

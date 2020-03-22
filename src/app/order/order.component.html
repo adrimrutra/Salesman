@@ -46,50 +46,49 @@
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="billingCompany">Company</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.companyName}}</span>
-                <span></span>
+                <span class="form-control label-background">{{order.companyName}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="billingDba">DBA</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.dba}}</span>
+                <span class="form-control label-background">{{order.dba}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="billingStreet1">Address 1</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.street1}}</span>
+                <span class="form-control label-background">{{order.billingAddress.street1}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="address2">Address 2</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.street2}}</span>
+                <span class="form-control label-background">{{order.billingAddress.street2}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="billingCity">City</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.city}}</span>
+                <span class="form-control label-background">{{order.billingAddress.city}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="billingState">State</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.country}}</span>
+                <span class="form-control label-background">{{order.billingAddress.country}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="billingPostcode">ZIP</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.billingAddress.postcode}}</span>
+                <span class="form-control label-background">{{order.billingAddress.postcode}}</span>
               </div>
             </div>
 
@@ -126,42 +125,42 @@
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingCompany">Company</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.companyName}}</span>
+                <span class="form-control label-background">{{order.companyName}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingStreet1">Address 1</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.street1}}</span>
+                <span class="form-control label-background">{{order.sippingAddress.street1}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingStreet2">Address 2</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.street2}}</span>
+                <span class="form-control label-background">{{order.sippingAddress.street2}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingCity">City</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.city}}</span>
+                <span class="form-control label-background">{{order.sippingAddress.city}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingState">State</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.country}}</span>
+                <span class="form-control label-background">{{order.sippingAddress.country}}</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingPostcode">ZIP</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control">{{order.sippingAddress.postcode}}</span>
+                <span class="form-control label-background">{{order.sippingAddress.postcode}}</span>
               </div>
             </div>
 
@@ -191,10 +190,10 @@
               <div class="col-xs-8 col-sm-8 col-md-8">
                 <select id="orderTaken" class="form-control" required formControlName="orderTaken">
                   <option [value]="option" *ngFor="let option of orderOption; let i = index">{{option}}</option>
-                  <span *ngIf="!orderForm.get('orderTaken').valid && orderForm.get('orderTaken').touched"
-                    class="help-block">This field is required!
-                  </span>
                 </select>
+                <span *ngIf="!orderForm.get('orderTaken').valid && orderForm.get('orderTaken').touched"
+                    class="help-block">This field is required!
+                </span>
               </div>
             </div>
 
@@ -257,6 +256,9 @@
               <select id="terms" class="form-control" formControlName="terms">
                 <option [value]="term" *ngFor="let term of orderTermsOption; let i = index">{{term}}</option>
               </select>
+              <span *ngIf="!orderForm.get('terms').valid && orderForm.get('terms').touched"
+                    class="help-block">This field is required!
+              </span>
             </div>
 
             <div class="col-xs-6 col-sm-3 col-md-3">
@@ -294,6 +296,9 @@
                   <select id="orderType" class="form-control" formControlName="orderType">
                     <option [value]="type" *ngFor="let type of orderTypeOption; let i = index">{{type}}</option>
                   </select>
+                  <span *ngIf="!orderForm.get('orderType').valid && orderForm.get('orderType').touched"
+                    class="help-block">This field is required!
+                  </span>
                 </div>
               </div>
             </div>
@@ -395,13 +400,13 @@
 
             <div class="col-xs-12 col-sm-4 col-md-4">
               <div class="form-group">
-                <label class="control-label" for="orderComments">Order Comments</label>
+                <label class="control-label" style="margin-top: 7px;" for="orderComments">Order Comments</label>
                 <textarea class="form-control" rows="5" formControlName="orderComments"></textarea>
               </div>
             </div>
 
             <div class="col-xs-4 col-sm-offset-1 col-sm-3 col-md-offset-1 col-md-3">
-              <label class="control-label" for="">Order Option</label>
+              <label class="control-label" style="margin-top: 7px;" for="">Order Option</label>
               <div class="checkbox">
                 <label>
                   <input type="checkbox" value="" formControlName="shipEarly">
@@ -413,27 +418,27 @@
             <div class="col-xs-8 col-sm-4 col-md-4">
               <div class="row">
                 <div class="form-group">
-                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="totalCases">Total Cases</label>
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" style="margin-top: 7px;" for="totalCases">Total Cases</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                    <span class="form-control">{{totalCases}}</span>
+                    <span class="form-control label-background">{{totalCases}}</span>
                   </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group">
-                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="totalPairs">Total Pairs</label>
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" style="margin-top: 7px;" for="totalPairs">Total Pairs</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                    <span class="form-control">{{totalPairs}}</span>
+                    <span class="form-control label-background">{{totalPairs}}</span>
                   </div>
                 </div>
               </div>
             
               <div class="row">
                 <div class="form-group">
-                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="total">Total</label>
+                  <label class="col-xs-6 col-sm-6 col-md-4 control-label" style="margin-top: 7px;" for="total">Total</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                    <span class="form-control">{{total}}</span>
+                    <span class="form-control label-background" style="font-weight: bold;">{{total}}</span>
                   </div>
                 </div>
               </div>

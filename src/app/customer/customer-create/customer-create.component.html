@@ -18,7 +18,7 @@
 
             <div class="row">
               <div class="col-xs-5 col-sm-4 col-md-4">
-                  <h1 style="font-size: 20px; font-weight: bold;">Company Inc.</h1>
+                <h1 style="font-size: 20px; font-weight: bold;">Company Inc.</h1>
               </div>
 
               <div class="col-xs-7 col-sm-8 col-md-8">
@@ -56,8 +56,11 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                      <div class="col-xs-12 col-sm-12 col-sm-12 required">
-                        <input type="text" class="form-control" id="companyName" formControlName="companyName" placeholder="Company name">
+                      <div class="col-xs-12 col-sm-12 col-sm-12">
+                        <span class="asterisk" style="left: 130px;"
+                          *ngIf="!customerForm.get('companyName').valid && !customerForm.get('companyName').touched">*</span>
+                        <input type="text" class="form-control placeholder" id="companyName"
+                          formControlName="companyName" placeholder="Company Name">
                         <span *ngIf="!customerForm.get('companyName').valid && customerForm.get('companyName').touched"
                           class="help-block">
                           This field is required!
@@ -71,7 +74,9 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                      <div class="col-sm-4 required">
+                      <div class="col-sm-4">
+                        <span class="asterisk" style="left: 115px;"
+                          *ngIf="!customerForm.get('customerNumber').valid && !customerForm.get('customerNumber').touched">*</span>
                         <input type="text" class="form-control" id="customerNumber" placeholder="Customer No."
                           formControlName="customerNumber">
                         <span
@@ -80,14 +85,18 @@
                           This field is required!
                         </span>
                       </div>
-                      <div class="col-sm-4 required">
+                      <div class="col-sm-4">
+                        <span class="asterisk" style="left: 58px;"
+                          *ngIf="!customerForm.get('dba').valid && !customerForm.get('dba').touched">*</span>
                         <input type="text" class="form-control" id="dba" formControlName="dba" placeholder="DBA">
                         <span *ngIf="!customerForm.get('dba').valid && customerForm.get('dba').touched"
                           class="help-block">
                           This field is required!
                         </span>
                       </div>
-                      <div class="col-sm-4 required">
+                      <div class="col-sm-4">
+                        <span class="asterisk" style="left: 70px;"
+                          *ngIf="!customerForm.get('vatNumber').valid && !customerForm.get('vatNumber').touched">*</span>
                         <input type="text" class="form-control" id="vatNumber" formControlName="vatNumber"
                           placeholder="Tax ID">
                         <span *ngIf="!customerForm.get('vatNumber').valid && customerForm.get('vatNumber').touched"
@@ -102,7 +111,9 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <div class="col-sm-6 required">
+                      <div class="col-sm-6">
+                        <span class="asterisk" style="left: 80px;"
+                          *ngIf="!customerForm.get('website').valid && !customerForm.get('website').touched">*</span>
                         <input type="text" class="form-control" id="website" formControlName="website"
                           placeholder="Website">
                         <span *ngIf="!customerForm.get('website').valid && customerForm.get('website').touched"
@@ -110,13 +121,14 @@
                           This field is required!
                         </span>
                       </div>
-                      <div class="col-sm-6 required">
+                      <div class="col-sm-6">
+                        <span class="asterisk" style="left: 66px;"
+                          *ngIf="!customerForm.get('email').dirty && !customerForm.get('email').touched">*</span>
                         <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
-                        
                         <span *ngIf="!customerForm.get('email').valid && customerForm.get('email').touched"
                           class="help-block">
                           <span *ngIf="customerForm.get('email').errors['pattern']">Wrong Email format!</span>
-                            <span *ngIf="customerForm.get('email').errors['required']">This field is required!</span>
+                          <span *ngIf="customerForm.get('email').errors['required']">This field is required!</span>
                         </span>
                       </div>
                     </div>
@@ -126,26 +138,33 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <div class="col-sm-6 required">
+                      <div class="col-sm-6">
+                        <span class="asterisk" style="left: 70px;"
+                          *ngIf="!customerForm.get('phoneCell').dirty && !customerForm.get('phoneCell').touched">*</span>
                         <input type="text" class="form-control" id="phoneCell" formControlName="phoneCell"
                           placeholder="Phone">
 
                         <span *ngIf="!customerForm.get('phoneCell').valid && customerForm.get('phoneCell').touched"
                           class="help-block">
-                          <span *ngIf="customerForm.get('phoneCell').errors['pattern']">Phone format: +1 01234567891234  +101234567891234</span>
+                          <span *ngIf="customerForm.get('phoneCell').errors['pattern']">Phone format: +1 0123456789123
+                            +10123456789123</span>
                           <span *ngIf="customerForm.get('phoneCell').errors['required']">This field is required!</span>
                         </span>
 
 
                       </div>
-                      <div class="col-sm-6 required">
+                      <div class="col-sm-6">
+                        <span class="asterisk" style="left: 70px;"
+                          *ngIf="!customerForm.get('phoneLandline').dirty && !customerForm.get('phoneLandline').touched">*</span>
                         <input type="text" class="form-control" id="phoneLandline" formControlName="phoneLandline"
                           placeholder="Mobile">
                         <span
                           *ngIf="!customerForm.get('phoneLandline').valid && customerForm.get('phoneLandline').touched"
                           class="help-block">
-                          <span *ngIf="customerForm.get('phoneLandline').errors['pattern']">Phone format: +1 01234567891234  +101234567891234</span>
-                          <span *ngIf="customerForm.get('phoneLandline').errors['required']">This field is required!</span>
+                          <span *ngIf="customerForm.get('phoneLandline').errors['pattern']">Phone format: +1
+                            0123456789123 +10123456789123</span>
+                          <span *ngIf="customerForm.get('phoneLandline').errors['required']">This field is
+                            required!</span>
                         </span>
                       </div>
 
@@ -162,24 +181,33 @@
             <div class="row">
 
               <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group padding-l-r">
+                      <label for="salesperson1" class="control-required">Salesperson</label>
+                      <select id="salesperson1" class="form-control" formControlName="salesperson1">
+                        <option [value]="person.code" *ngFor="let person of salesPersons; let i = index">
+                          {{person.firstName +' '+ person.lastName}}
+                        </option>
+                      </select>
+                      <span *ngIf="!customerForm.get('salesperson1').valid && customerForm.get('salesperson1').touched"
+                        class="help-block">This field is required!</span>
+                    </div>
+                  </div>
 
-                <div class="form-group padding-l-r">
-                  <label for="salesperson1">Salesperson</label>
-                  <select id="salesperson1" class="form-control" formControlName="salesperson1">
-                    <option [value]="person.code" *ngFor="let person of salesPersons; let i = index">
-                      {{person.firstName +' '+ person.lastName}}
-                    </option>
-                  </select>
+                  <div class="col-md-6">
+                    <div class="form-group padding-l-r">
+                      <label for="salesperson1" class="control-required">Salesperson</label>
+                      <select id="salesperson2" class="form-control" formControlName="salesperson2">
+                        <option [value]="person.code" *ngFor="let person of salesPersons; let i = index">
+                          {{person.firstName +' '+ person.lastName}}
+                        </option>
+                      </select>
+                      <span *ngIf="!customerForm.get('salesperson2').valid && customerForm.get('salesperson2').touched"
+                        class="help-block">This field is required!</span>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="form-group padding-l-r">
-                  <select id="salesperson2" class="form-control" formControlName="salesperson2">
-                    <option [value]="person.code" *ngFor="let person of salesPersons; let i = index">
-                      {{person.firstName +' '+ person.lastName}}
-                    </option>
-                  </select>
-                </div>
-
               </div>
 
               <div class="col-md-6">
@@ -224,11 +252,8 @@
 
 
                   <div *ngFor="let address of addresses?.controls; let i = index">
-                    <app-address 
-                      [index]="i" 
-                      [addressForm]="address" 
-                      (deleteAddress)="deleteAddress($event)" 
-                      [count]="((addresses?.controls.length <= 1) ? i : i + 1)" >
+                    <app-address [index]="i" [addressForm]="address" (deleteAddress)="deleteAddress($event)"
+                      [count]="((addresses?.controls.length <= 1) ? i : i + 1)">
                     </app-address>
                   </div>
 
@@ -240,7 +265,9 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <div class="col-sm-12 col-md-6 required">
+                          <div class="col-xs-12 col-sm-12 col-md-6">
+                            <span class="asterisk" style="left: 98px;"
+                              *ngIf="!customerForm.get('contactFirstName').valid && !customerForm.get('contactFirstName').touched">*</span>
                             <input type="text" class="form-control" id="contactFirstName"
                               formControlName="contactFirstName" placeholder="First Name">
                             <span
@@ -249,7 +276,9 @@
                               This field is required!
                             </span>
                           </div>
-                          <div class="col-sm-12 col-md-6 required">
+                          <div class="col-xs-12 col-sm-12 col-md-6">
+                            <span class="asterisk" style="left: 95px;"
+                              *ngIf="!customerForm.get('contactLastName').valid && !customerForm.get('contactLastName').touched">*</span>
                             <input type="text" class="form-control" id="contactLastName"
                               formControlName="contactLastName" placeholder="Last name">
                             <span
@@ -266,49 +295,18 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <div class="col-sm-12 required">
+                          <div class="col-sm-12">
+                            <span class="asterisk" style="left: 65px;"
+                              *ngIf="!customerForm.get('contactEmail').dirty && !customerForm.get('contactEmail').touched">*</span>
                             <input type="email" class="form-control" id="contactEmail" formControlName="contactEmail"
                               placeholder="Email">
-                              <span *ngIf="!customerForm.get('contactEmail').valid && customerForm.get('contactEmail').touched"
-                              class="help-block">
-                              <span *ngIf="customerForm.get('contactEmail').errors['pattern']">Wrong Email format!</span>
-                                <span *ngIf="customerForm.get('contactEmail').errors['required']">This field is required!</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <div class="col-sm-12 required">
-                            <input type="test" class="form-control" id="contactPhoneCell"
-                              formControlName="contactPhoneCell" placeholder="Cell Phone">
                             <span
-                              *ngIf="!customerForm.get('contactPhoneCell').valid && customerForm.get('contactPhoneCell').touched"
+                              *ngIf="!customerForm.get('contactEmail').valid && customerForm.get('contactEmail').touched"
                               class="help-block">
-                              <span *ngIf="customerForm.get('contactPhoneCell').errors['pattern']">Phone format: +1 01234567891234  +101234567891234</span>
-                              <span *ngIf="customerForm.get('contactPhoneCell').errors['required']">This field is
+                              <span *ngIf="customerForm.get('contactEmail').errors['pattern']">Wrong Email
+                                format!</span>
+                              <span *ngIf="customerForm.get('contactEmail').errors['required']">This field is
                                 required!</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <div class="col-sm-12 required">
-                            <input type="test" class="form-control" id="contactPhoneLandline"
-                              formControlName="contactPhoneLandline" placeholder="Landline Phone">
-                            <span
-                              *ngIf="!customerForm.get('contactPhoneLandline').valid && customerForm.get('contactPhoneLandline').touched"
-                              class="help-block">
-                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['pattern']">Phone format: +1 01234567891234  +101234567891234</span>
-                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['required']">This field is required!</span>
                             </span>
                           </div>
                         </div>
@@ -320,12 +318,55 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-sm-12">
+                            <span class="asterisk" style="left: 97px;"
+                              *ngIf="!customerForm.get('contactPhoneCell').dirty && !customerForm.get('contactPhoneCell').touched">*</span>
+                            <input type="test" class="form-control" id="contactPhoneCell"
+                              formControlName="contactPhoneCell" placeholder="Cell Phone">
+                            <span
+                              *ngIf="!customerForm.get('contactPhoneCell').valid && customerForm.get('contactPhoneCell').dirty"
+                              class="help-block">
+                              <span *ngIf="customerForm.get('contactPhoneCell').errors['pattern']">Phone format: +1
+                                0123456789123 +10123456789123</span>
+                              <span *ngIf="customerForm.get('contactPhoneCell').errors['required']">This field is
+                                required!</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-sm-12">
+                            <span class="asterisk" style="left: 126px;"
+                              *ngIf="!customerForm.get('contactPhoneLandline').dirty && !customerForm.get('contactPhoneLandline').touched">*</span>
+                            <input type="test" class="form-control" id="contactPhoneLandline"
+                              formControlName="contactPhoneLandline" placeholder="Landline Phone">
+                            <span
+                              *ngIf="!customerForm.get('contactPhoneLandline').valid && customerForm.get('contactPhoneLandline').touched"
+                              class="help-block">
+                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['pattern']">Phone format: +1
+                                0123456789123 +10123456789123</span>
+                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['required']">This field is
+                                required!</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <div class="col-sm-12">
                             <input type="test" class="form-control" id="contactFax" formControlName="contactFax"
                               placeholder="Fax">
                             <span
                               *ngIf="!customerForm.get('contactFax').valid && customerForm.get('contactFax').touched"
                               class="help-block">
-                              <span *ngIf="customerForm.get('contactFax').errors['pattern']">Fax format: +1 01234567891234  +101234567891234</span>
+                              <span *ngIf="customerForm.get('contactFax').errors['pattern']">Fax format: +1
+                                0123456789123 +10123456789123</span>
                             </span>
                           </div>
                         </div>
