@@ -8,19 +8,22 @@ export class CustomerForm {
   dba = new FormControl('', Validators.required);
   vatNumber = new FormControl('', Validators.required);
   website = new FormControl('', Validators.required);
-  email = new FormControl('', [Validators.required, Validators.email]);
-  phoneCell = new FormControl('', [Validators.required, Validators.pattern('((\\+91-?)|0)?[0-9]{10}$')]);
-  phoneLandline = new FormControl('', [Validators.required, Validators.pattern('((\\+91-?)|0)?[0-9]{10}$')]);
+  email = new FormControl('', [Validators.required,
+    Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]);
+
+  phoneCell = new FormControl('', [Validators.required, Validators.pattern('^(\\+)(?:[0-9] ?){6,14}[0-9]$')]);
+  phoneLandline = new FormControl('', [Validators.required, Validators.pattern('^(\\+)(?:[0-9] ?){6,14}[0-9]$')]);
   salesperson1 = new FormControl('');
   salesperson2 = new FormControl('');
   notes = new FormControl('');
 
   contactFirstName = new FormControl('', Validators.required);
   contactLastName = new FormControl('', Validators.required);
-  contactEmail = new FormControl('', [Validators.required, Validators.email]);
-  contactPhoneCell = new FormControl('', [Validators.required, Validators.pattern('((\\+91-?)|0)?[0-9]{10}$')]);
-  contactPhoneLandline = new FormControl('', [Validators.required, Validators.pattern('((\\+91-?)|0)?[0-9]{10}$')]);
-  contactFax = new FormControl('', Validators.pattern('((\\+91-?)|0)?[0-9]{10}$'));
+  contactEmail = new FormControl('', [Validators.required,
+    Validators.pattern(`^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$`)]);
+  contactPhoneCell = new FormControl('', [Validators.required, Validators.pattern('^(\\+)(?:[0-9] ?){6,14}[0-9]$')]);
+  contactPhoneLandline = new FormControl('', [Validators.required, Validators.pattern('^(\\+)(?:[0-9] ?){6,14}[0-9]$')]);
+  contactFax = new FormControl('', Validators.pattern('^(\\+)(?:[0-9] ?){6,14}[0-9]$'));
   contactIsResidence = new FormControl(false);
   addresses = new FormArray([]);
 

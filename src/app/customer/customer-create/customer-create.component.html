@@ -41,7 +41,7 @@
             <div class="row">
 
               <div class="col-xs-12 col-sm-12 col-md-4">
-                <div class="row" style="margin-bottom: 10px;">
+                <div class="row" style="margin-bottom: 15px;">
                   <div class="col-xs-12 col-sm-12 col-md-12">
 
                     <img class="company-logo" src="../../../assets/logo.jpg" alt="logo">
@@ -56,9 +56,8 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                      <div class="col-xs-12 col-sm-12 col-sm-12">
-                        <input type="text" class="form-control" id="companyName" formControlName="companyName"
-                          placeholder="Company name">
+                      <div class="col-xs-12 col-sm-12 col-sm-12 required">
+                        <input type="text" class="form-control" id="companyName" formControlName="companyName" placeholder="Company name">
                         <span *ngIf="!customerForm.get('companyName').valid && customerForm.get('companyName').touched"
                           class="help-block">
                           This field is required!
@@ -72,7 +71,7 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                      <div class="col-sm-4">
+                      <div class="col-sm-4 required">
                         <input type="text" class="form-control" id="customerNumber" placeholder="Customer No."
                           formControlName="customerNumber">
                         <span
@@ -81,14 +80,14 @@
                           This field is required!
                         </span>
                       </div>
-                      <div class="col-sm-4">
+                      <div class="col-sm-4 required">
                         <input type="text" class="form-control" id="dba" formControlName="dba" placeholder="DBA">
                         <span *ngIf="!customerForm.get('dba').valid && customerForm.get('dba').touched"
                           class="help-block">
                           This field is required!
                         </span>
                       </div>
-                      <div class="col-sm-4">
+                      <div class="col-sm-4 required">
                         <input type="text" class="form-control" id="vatNumber" formControlName="vatNumber"
                           placeholder="Tax ID">
                         <span *ngIf="!customerForm.get('vatNumber').valid && customerForm.get('vatNumber').touched"
@@ -103,7 +102,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 required">
                         <input type="text" class="form-control" id="website" formControlName="website"
                           placeholder="Website">
                         <span *ngIf="!customerForm.get('website').valid && customerForm.get('website').touched"
@@ -111,9 +110,14 @@
                           This field is required!
                         </span>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 required">
                         <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
-
+                        
+                        <span *ngIf="!customerForm.get('email').valid && customerForm.get('email').touched"
+                          class="help-block">
+                          <span *ngIf="customerForm.get('email').errors['pattern']">Wrong Email format!</span>
+                            <span *ngIf="customerForm.get('email').errors['required']">This field is required!</span>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -122,30 +126,26 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 required">
                         <input type="text" class="form-control" id="phoneCell" formControlName="phoneCell"
                           placeholder="Phone">
 
                         <span *ngIf="!customerForm.get('phoneCell').valid && customerForm.get('phoneCell').touched"
                           class="help-block">
-                          <span *ngIf="customerForm.get('phoneCell').errors['pattern']">Phone format should be
-                            0000000000</span>
-                          <span *ngIf="customerForm.get('phoneCell').errors['required']">This field is
-                            required!</span>
+                          <span *ngIf="customerForm.get('phoneCell').errors['pattern']">Phone format: +1 01234567891234  +101234567891234</span>
+                          <span *ngIf="customerForm.get('phoneCell').errors['required']">This field is required!</span>
                         </span>
 
 
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 required">
                         <input type="text" class="form-control" id="phoneLandline" formControlName="phoneLandline"
                           placeholder="Mobile">
                         <span
                           *ngIf="!customerForm.get('phoneLandline').valid && customerForm.get('phoneLandline').touched"
                           class="help-block">
-                          <span *ngIf="customerForm.get('phoneLandline').errors['pattern']">Phone format should be
-                            0000000000</span>
-                          <span *ngIf="customerForm.get('phoneLandline').errors['required']">This field is
-                            required!</span>
+                          <span *ngIf="customerForm.get('phoneLandline').errors['pattern']">Phone format: +1 01234567891234  +101234567891234</span>
+                          <span *ngIf="customerForm.get('phoneLandline').errors['required']">This field is required!</span>
                         </span>
                       </div>
 
@@ -164,7 +164,7 @@
               <div class="col-md-6">
 
                 <div class="form-group padding-l-r">
-                  <label for="Salesperson">Salesperson</label>
+                  <label for="salesperson1">Salesperson</label>
                   <select id="salesperson1" class="form-control" formControlName="salesperson1">
                     <option [value]="person.code" *ngFor="let person of salesPersons; let i = index">
                       {{person.firstName +' '+ person.lastName}}
@@ -235,12 +235,12 @@
 
                   <!-- right side-->
                   <div class="col-sm-6">
-                    <h5 class="pull-left" style="font-size: 15px; font-weight: bold; margin-bottom: 7px;">Contact</h5>
+                    <h5 class="pull-left" style="font-size: 15px; font-weight: bold; margin-bottom: 20px;">Contact</h5>
 
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <div class="col-sm-12 col-md-6">
+                          <div class="col-sm-12 col-md-6 required">
                             <input type="text" class="form-control" id="contactFirstName"
                               formControlName="contactFirstName" placeholder="First Name">
                             <span
@@ -249,7 +249,7 @@
                               This field is required!
                             </span>
                           </div>
-                          <div class="col-sm-12 col-md-6">
+                          <div class="col-sm-12 col-md-6 required">
                             <input type="text" class="form-control" id="contactLastName"
                               formControlName="contactLastName" placeholder="Last name">
                             <span
@@ -266,13 +266,13 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <div class="col-sm-12">
+                          <div class="col-sm-12 required">
                             <input type="email" class="form-control" id="contactEmail" formControlName="contactEmail"
                               placeholder="Email">
-                            <span
-                              *ngIf="!customerForm.get('contactEmail').valid && customerForm.get('contactEmail').touched"
+                              <span *ngIf="!customerForm.get('contactEmail').valid && customerForm.get('contactEmail').touched"
                               class="help-block">
-                              This field is required!
+                              <span *ngIf="customerForm.get('contactEmail').errors['pattern']">Wrong Email format!</span>
+                                <span *ngIf="customerForm.get('contactEmail').errors['required']">This field is required!</span>
                             </span>
                           </div>
                         </div>
@@ -283,14 +283,13 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <div class="col-sm-12">
+                          <div class="col-sm-12 required">
                             <input type="test" class="form-control" id="contactPhoneCell"
                               formControlName="contactPhoneCell" placeholder="Cell Phone">
                             <span
                               *ngIf="!customerForm.get('contactPhoneCell').valid && customerForm.get('contactPhoneCell').touched"
                               class="help-block">
-                              <span *ngIf="customerForm.get('contactPhoneCell').errors['pattern']">Phone format
-                                should be 0000000000</span>
+                              <span *ngIf="customerForm.get('contactPhoneCell').errors['pattern']">Phone format: +1 01234567891234  +101234567891234</span>
                               <span *ngIf="customerForm.get('contactPhoneCell').errors['required']">This field is
                                 required!</span>
                             </span>
@@ -302,16 +301,14 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <div class="col-sm-12">
+                          <div class="col-sm-12 required">
                             <input type="test" class="form-control" id="contactPhoneLandline"
                               formControlName="contactPhoneLandline" placeholder="Landline Phone">
                             <span
                               *ngIf="!customerForm.get('contactPhoneLandline').valid && customerForm.get('contactPhoneLandline').touched"
                               class="help-block">
-                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['pattern']">Phone format
-                                should be 0000000000</span>
-                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['required']">This field is
-                                required!</span>
+                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['pattern']">Phone format: +1 01234567891234  +101234567891234</span>
+                              <span *ngIf="customerForm.get('contactPhoneLandline').errors['required']">This field is required!</span>
                             </span>
                           </div>
                         </div>
@@ -328,10 +325,7 @@
                             <span
                               *ngIf="!customerForm.get('contactFax').valid && customerForm.get('contactFax').touched"
                               class="help-block">
-                              <span *ngIf="customerForm.get('contactFax').errors['pattern']">Fax format
-                                should be 0000000000</span>
-                              <span *ngIf="customerForm.get('contactFax').errors['required']">This field is
-                                required!</span>
+                              <span *ngIf="customerForm.get('contactFax').errors['pattern']">Fax format: +1 01234567891234  +101234567891234</span>
                             </span>
                           </div>
                         </div>

@@ -12,6 +12,35 @@
 @import "~@progress/kendo-theme-bootstrap/dist/all.scss";
 
 
+.required-label:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    top:7px;
+}
+
+.control-required:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+}
+
+.required:after{ 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    top: -11px;
+    left: 10px;
+}
+
+.help-block{
+    color: #d00 !important;
+  }
+
+
 
 
 

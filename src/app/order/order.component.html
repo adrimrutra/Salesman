@@ -12,7 +12,7 @@
       <div class="row">
         <div class="form-horizontal">
           <div class="form-group">
-            <label class="col-xs-4 col-sm-4 col-md-4 control-label" style="text-align: left;">Customer</label>
+            <label class="col-xs-4 col-sm-4 col-md-4 control-label required-label" style="text-align: left;">Customer</label>
             <div class="col-xs-4 col-sm-4 col-md-4 btn-padding-left">
               <app-customer-select class="pull-left" (selectedCustomer)="onSelectedCustomer($event)">
               </app-customer-select>
@@ -103,7 +103,7 @@
           <div class="form-horizontal centre-container-padding-left">
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="shipVia">Ship Via</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label required-label" style="text-align: left;" for="shipVia">Ship Via</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
                 <input type="text" class="form-control" id="shipVia" placeholder="e.g container" formControlName="shipVia">
                 <span *ngIf="!orderForm.get('shipVia').valid && orderForm.get('shipVia').touched"
@@ -116,7 +116,6 @@
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Ship To</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
                 <select class="form-control" (change)="onChangeSippingAddress($event.target.value)">
-                  <option value="" disabled selected>Select Ship To</option>
                   <option [value]="i" *ngFor="let address of curCustomer.addresses; let i = index">
                     {{address.street1 +', '+ address.city +', '+ address.country +', '+ address.postcode}}
                   </option>
@@ -176,12 +175,11 @@
           <div class="form-horizontal right-container-padding-left">
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="salesPerson" style="text-align: left;">Sales Rep.</label>
+              <label class="col-xs-4 col-sm-4 col-md-4 control-label required-label" for="salesPerson" style="text-align: left;">Sales Rep.</label>
               <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="btn-group" data-toggle="buttons">
                   <label class="btn btn-primary" #sales *ngFor="let person of salesPersons;" (click)="onSalesPersonChanged(person.code)">
                     <input type="radio" name="salesPerson" [value]="person" formControlName="salesPerson" >
-                    <!-- <input type="radio" name="salesPerson" [value]="person" [(ngModel)]="salesPerson" [ngModelOptions]="{standalone: true}"> -->
                     {{ person.firstName }}
                   </label>
                 </div>
@@ -189,9 +187,9 @@
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="orderTaken" style="text-align: left;">Order Taken by</label>
+              <label class="col-xs-4 col-sm-4 col-md-4 control-label required-label" for="orderTaken" style="text-align: left;">Taken by</label>
               <div class="col-xs-8 col-sm-8 col-md-8">
-                <select id="orderTaken" class="form-control" formControlName="orderTaken">
+                <select id="orderTaken" class="form-control" required formControlName="orderTaken">
                   <option [value]="option" *ngFor="let option of orderOption; let i = index">{{option}}</option>
                   <span *ngIf="!orderForm.get('orderTaken').valid && orderForm.get('orderTaken').touched"
                     class="help-block">This field is required!
@@ -201,9 +199,12 @@
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-4 col-md-4 control-label" for="showCode" style="text-align: left;">Show Code</label>
+              <label class="col-xs-4 col-sm-4 col-md-4 control-label required-label" for="showCode" style="text-align: left;">Show Code</label>
               <div class="col-xs-8 col-sm-8 col-md-8">
                 <input type="text" class="form-control" id="showCode" formControlName="showCode" readonly placeholder="Show Code"> 
+                <span *ngIf="!orderForm.get('showCode').valid && orderForm.get('showCode').touched" class="help-block">This
+                  field is required!
+                </span>
               </div>
             </div>
 
@@ -219,7 +220,7 @@
 
             <div class="col-xs-4 col-sm-2 col-md-2">
               <div class="form-group">
-                <label class="control-label" for="orderNumber">Order Number</label>
+                <label class="control-label control-required" for="orderNumber">Order Number</label>
                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
                 <input type="text" class="form-control" id="orderNumber" formControlName="orderNumber"
                   placeholder="Order number">
@@ -231,15 +232,18 @@
 
             <div class="col-xs-4 col-sm-2 col-md-2">
               <div class="form-group">
-                <label class="control-label" for="dateSold">Date Of Sold</label>
+                <label class="control-label control-required" for="dateSold">Date Of Sold</label>
                 <input type="text" id="dateSold" placeholder="Date Of Sold" class="form-control" bsDatepicker
                   formControlName="dateSold" [bsConfig]="bsConfig">
+                  <span *ngIf="!orderForm.get('dateSold').valid && orderForm.get('dateSold').touched" class="help-block">This
+                    field is required!
+                  </span>
               </div>
             </div>
 
             <div class="col-xs-4 col-sm-2 col-md-2">
               <div class="form-group">
-                <label class="control-label" for="customerPo">Customer P.O</label>
+                <label class="control-label control-required" for="customerPo">Customer P.O</label>
                 <input type="text" class="form-control" id="customerPo" formControlName="customerPo"
                   placeholder="Customer p o">
                 <span *ngIf="!orderForm.get('customerPo').valid && orderForm.get('customerPo').touched"
@@ -249,7 +253,7 @@
             </div>
 
             <div class="col-xs-6 col-sm-3 col-md-3 clear-both">
-              <label class="control-label" for="terms">Terms</label>
+              <label class="control-label control-required" for="terms">Terms</label>
               <select id="terms" class="form-control" formControlName="terms">
                 <option [value]="term" *ngFor="let term of orderTermsOption; let i = index">{{term}}</option>
               </select>
@@ -257,7 +261,7 @@
 
             <div class="col-xs-6 col-sm-3 col-md-3">
               <div class="form-group">
-                <label class="control-label" for="dept">Dept.</label>
+                <label class="control-label control-required" for="dept">Dept.</label>
                 <input type="text" class="form-control" id="dept" formControlName="dept" placeholder="Dept">
                 <span *ngIf="!orderForm.get('dept').valid && orderForm.get('dept').touched" class="help-block">This
                   field is required!
@@ -285,7 +289,7 @@
             <div class="col-xs-9 col-sm-4 col-md-4" style="padding: 0;">
   
               <div class="form-group" >
-                <label class="col-xs-4 col-sm-4 col-md-4 control-label" style="text-align: right; padding-top: 9px;" for="orderType" >Type</label>
+                <label class="col-xs-4 col-sm-4 col-md-4 control-label required-label" style="text-align: right; padding-top: 9px;" for="orderType" >Type</label>
                 <div class="col-xs-8 col-sm-8 col-md-8">
                   <select id="orderType" class="form-control" formControlName="orderType">
                     <option [value]="type" *ngFor="let type of orderTypeOption; let i = index">{{type}}</option>
@@ -322,7 +326,7 @@
 
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12" style="height: 300px;">
-
+          <input type="checkbox" hidden required formControlName="isProduct">
           <kendo-grid  #grid 
             [data]="this.order.products" style="width: auto"
             [style.height.%]="100" scrollable="virtual"
@@ -411,7 +415,7 @@
                 <div class="form-group">
                   <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="totalCases">Total Cases</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                      <input type="text" class="form-control" id="totalCases" formControlName="totalCases" readonly placeholder="Total Cases">
+                    <span class="form-control">{{totalCases}}</span>
                   </div>
                 </div>
               </div>
@@ -420,16 +424,16 @@
                 <div class="form-group">
                   <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="totalPairs">Total Pairs</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                    <input type="text" class="form-control" id="totalPairs" formControlName="totalPairs" readonly placeholder="Total Pairs">
+                    <span class="form-control">{{totalPairs}}</span>
                   </div>
                 </div>
               </div>
-
+            
               <div class="row">
                 <div class="form-group">
                   <label class="col-xs-6 col-sm-6 col-md-4 control-label" for="total">Total</label>
                   <div class="col-xs-6 col-sm-6 col-md-4">
-                    <input type="text" class="form-control" id="total" formControlName="total" readonly placeholder="Total">
+                    <span class="form-control">{{total}}</span>
                   </div>
                 </div>
               </div>

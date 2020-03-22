@@ -44,6 +44,9 @@ export class OrderComponent implements OnInit {
   orderOption: Array<string>;
   orderTypeOption: Array<string>;
   localTotal: any;
+  totalCases: any;
+  totalPairs: any;
+  total: any;
   bsConfig: any;
 
   productForm: FormGroup;
@@ -86,9 +89,7 @@ export class OrderComponent implements OnInit {
       orderType: new FormControl('', Validators.required),
       shipEarly: new FormControl(false),
       orderComments: new FormControl(''),
-      totalCases: new FormControl('', Validators.required),
-      totalPairs: new FormControl('', Validators.required),
-      total: new FormControl('', Validators.required)
+      isProduct: new FormControl(false)
     });
     this.resetForm();
   }
@@ -163,10 +164,12 @@ export class OrderComponent implements OnInit {
       this.order.totalCases = cases;
       this.order.total = +Number.parseFloat(price.toString()).toFixed(2);
 
+      this.totalCases = pairs;
+      this.totalPairs = cases;
+      this.total = Number.parseFloat(price.toString()).toFixed(2);
+
       this.orderForm.patchValue({
-        totalCases: this.order.totalCases,
-        totalPairs: this.order.totalPairs,
-        total: Number.parseFloat(price.toString()).toFixed(2)
+        isProduct: true
       });
 
       if (this.showTotal.nativeElement.checked) {
@@ -175,12 +178,13 @@ export class OrderComponent implements OnInit {
 
     } else {
       this.orderForm.patchValue({
-        totalCases: '',
-        totalPairs: '',
-        total: ''
+        isProduct: false
       });
 
       this.localTotal = '';
+      this.totalCases = '';
+      this.totalPairs = '';
+      this.total = '';
     }
   }
 
@@ -224,6 +228,9 @@ export class OrderComponent implements OnInit {
     this.curCustomer = new Customer();
     this.curCustomer.addresses = new Array<Address>();
     this.localTotal = '';
+    this.totalCases = '';
+    this.totalPairs = '';
+    this.total = '';
   }
 
   resetSales() {

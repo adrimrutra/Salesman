@@ -3,7 +3,7 @@ import { Address } from 'src/app/_models/customer/Address';
 
 export class AddressForm {
   street1 = new FormControl('', Validators.required);
-  street2 = new FormControl('', Validators.required);
+  street2 = new FormControl('');
   city = new FormControl('', Validators.required);
   state = new FormControl('', Validators.required);
   postcode = new FormControl('', Validators.required);
@@ -11,7 +11,7 @@ export class AddressForm {
   paymentTerms = new FormControl('', Validators.required);
   shippingPreference = new FormControl('', Validators.required);
   shippingPreferenceAccount = new FormControl('', Validators.required);
-  shippingInstructions = new FormControl('', Validators.required);
+  shippingInstructions = new FormControl('');
   billing = new FormControl(false);
   constructor(address: Address) {
     this.street1.setValue(address.street1);
