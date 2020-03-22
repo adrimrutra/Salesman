@@ -164,8 +164,8 @@ export class OrderComponent implements OnInit {
       this.order.totalCases = cases;
       this.order.total = +Number.parseFloat(price.toString()).toFixed(2);
 
-      this.totalCases = pairs;
-      this.totalPairs = cases;
+      this.totalCases = cases;
+      this.totalPairs = pairs;
       this.total = Number.parseFloat(price.toString()).toFixed(2);
 
       this.orderForm.patchValue({
