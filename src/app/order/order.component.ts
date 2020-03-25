@@ -4,8 +4,7 @@ import {
   ViewChild,
   ElementRef,
   ViewChildren,
-  QueryList,
-  ViewContainerRef
+  QueryList
 } from '@angular/core';
 import {
   FormBuilder,
@@ -33,9 +32,8 @@ import {
 })
 export class OrderComponent implements OnInit {
   @ViewChild('showTotal', { static: false }) showTotal: ElementRef;
-  // @ViewChildren('sales', { read: ElementRef }) sales: QueryList<ViewContainerRef>;
   @ViewChildren('sales', { read: ElementRef }) sales: QueryList<ElementRef>;
- 
+
   orderForm: FormGroup;
   curCustomer: Customer;
   salesPersons: Array<SalesPerson>;

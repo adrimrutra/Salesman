@@ -44,7 +44,6 @@ import { AddressComponent } from './forms/address/address.component';
       ModalModule.forRoot(),
       BsDatepickerModule.forRoot(),
       AlertModule.forRoot(),
-
       GridModule,
       DateInputsModule
    ],

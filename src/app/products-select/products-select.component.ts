@@ -25,11 +25,7 @@ export class ProductsSelectComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private formStorageService: FormStorageService
-  ) {
-    // if (!this.products) {
-    //   this.products = new Array<Product>();
-    // }
-  }
+  ) {}
 
   ngOnInit() {
     this.formStorageService.getProducts().subscribe(products => {
