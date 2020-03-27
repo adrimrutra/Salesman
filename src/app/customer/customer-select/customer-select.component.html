@@ -1,10 +1,9 @@
-<button type="button" class="btn btn-info" (click)="openModal(template)">Select Customer</button>
+<button type="button" class="btn btn-info" (click)="onOpenModal(template)">Select Customer</button>
 <br>
 <ng-template #template>
-
   <div class="modal-header">
     <h4 class="modal-title pull-left">Select Customer</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -21,19 +20,13 @@
       <div class="row" style="margin-top: 20px;">
         <div class="form-group">
           <div class="col-md-6">
-            
-            <button type="button" class="btn btn-danger pull-left" (click)="closeModal()">Cancel</button>
+            <button type="button" class="btn btn-danger pull-left" (click)="onCloseModal()">Cancel</button>
           </div>
           <div class="col-md-6">
-           
             <button type="button" class="btn btn-success pull-right" [disabled]="!isSelected" (click)="onSelectCustomer()">Select</button>
           </div>
-
         </div>
       </div>
-
     </div>
-
   </div>
-
 </ng-template>

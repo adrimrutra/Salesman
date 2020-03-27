@@ -15,7 +15,7 @@ export class Order {
   totalPairs: number;
   total: number;
   billingAddress: Address;
-  sippingAddress: Address;
+  shippingAddress: Address;
   dateSold: Date;
   shipVia: string;
   customerPo: string;

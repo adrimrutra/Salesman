@@ -46,7 +46,7 @@ export class CustomerSelectComponent implements OnInit {
     private modalService: BsModalService
   ) {}
 
-  openModal(template: TemplateRef<any>) {
+  onOpenModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
@@ -80,7 +80,7 @@ export class CustomerSelectComponent implements OnInit {
   onSelectionChanged(event) {
     this.isSelected = true;
   }
-  closeModal() {
+  onCloseModal() {
     this.modalRef.hide();
     this.isSelected = false;
   }
@@ -90,7 +90,7 @@ export class CustomerSelectComponent implements OnInit {
     if (selectedData) {
       const customer = selectedData[0] as Customer;
       this.selectedCustomer.emit(customer);
-      this.closeModal();
+      this.onCloseModal();
     }
   }
 }

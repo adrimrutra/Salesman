@@ -113,7 +113,7 @@
             <div class="form-group">
               <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;">Ship To</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <select class="form-control" (change)="onChangeSippingAddress($event.target.value)">
+                <select class="form-control" (change)="onChangeShippingAddress($event.target.value)">
                   <option [value]="i" *ngFor="let address of curCustomer.addresses; let i = index">
                     {{address.street1 +', '+ address.city +', '+ address.country +', '+ address.postcode}}
                   </option>
@@ -122,44 +122,44 @@
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingCompany">Company</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="shippingCompany">Company</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
                 <span class="form-control label-background">{{order.companyName}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingStreet1">Address 1</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="shippingStreet1">Address 1</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control label-background">{{order.sippingAddress.street1}}</span>
+                <span class="form-control label-background">{{order.shippingAddress.street1}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingStreet2">Address 2</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="shippingStreet2">Address 2</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control label-background">{{order.sippingAddress.street2}}</span>
+                <span class="form-control label-background">{{order.shippingAddress.street2}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingCity">City</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="shippingCity">City</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control label-background">{{order.sippingAddress.city}}</span>
+                <span class="form-control label-background">{{order.shippingAddress.city}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingState">State</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="shippingState">State</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control label-background">{{order.sippingAddress.country}}</span>
+                <span class="form-control label-background">{{order.shippingAddress.country}}</span>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="sippingPostcode">ZIP</label>
+              <label class="col-xs-4 col-sm-5 col-md-4 control-label" style="text-align: left;" for="shippingPostcode">ZIP</label>
               <div class="col-xs-8 col-sm-7 col-md-8">
-                <span class="form-control label-background">{{order.sippingAddress.postcode}}</span>
+                <span class="form-control label-background">{{order.shippingAddress.postcode}}</span>
               </div>
             </div>
 

@@ -21,6 +21,7 @@ export class ProductsSelectComponent implements OnInit {
   @Input() newProducts: Array<Product> | null;
   @Output() selectedProducts = new EventEmitter<Product[]>();
   products: Array<Product>;
+  isSelected = false;
 
   constructor(
     private modalService: BsModalService,
@@ -33,23 +34,19 @@ export class ProductsSelectComponent implements OnInit {
     });
   }
 
-  onOpenProductModal(template: TemplateRef<any>) {
+  onOpenModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-
     if (this.newProducts) {
       this.formStorageService.getProducts().subscribe(products => {
         this.products = products;
-
         this.newProducts.forEach(newProduct => {
           const index = this.products.findIndex(
             prod => prod.id === newProduct.id
           );
           this.products[index] = newProduct;
         });
-
       });
     }
-
   }
 
   onThumbnail(event: any) {
@@ -58,21 +55,29 @@ export class ProductsSelectComponent implements OnInit {
         e => e.id === +event.target.value && e.thumbnail
       );
       p.quantities++;
+      this.isSelected = true;
     } else {
       const p = this.products.find(e => e.id === +event.target.value);
       p.quantities = 0;
+      this.isSelected = false;
     }
   }
 
-  onSelectProducts() {
-    const newProd = this.products.filter(
-      prod => prod.thumbnail && prod.quantities > 0
-    );
-    this.selectedProducts.emit(newProd);
-    this.modalRef.hide();
+  onQuantitiesChanged() {
+    const newProd = this.products.filter(prod => prod.thumbnail && prod.quantities > 0);
+    (newProd.length > 0) ? this.isSelected = true : this.isSelected = false;
   }
 
-  onClose() {
+  onSelectProducts() {
+    const newProd = this.products.filter(prod => prod.thumbnail && prod.quantities > 0);
+    this.selectedProducts.emit(newProd);
+    this.modalRef.hide();
+    this.isSelected = false;
+  }
+
+  onCloseModal() {
     this.selectedProducts.emit(this.newProducts);
+    this.modalRef.hide();
+    this.isSelected = false;
   }
 }

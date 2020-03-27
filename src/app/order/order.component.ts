@@ -194,7 +194,7 @@ export class OrderComponent implements OnInit {
       this.order.billingAddress = this.curCustomer.addresses.find(
         address => address.billing
       );
-      this.order.sippingAddress = this.curCustomer.addresses.find(
+      this.order.shippingAddress = this.curCustomer.addresses.find(
         address => !address.billing
       );
 
@@ -204,8 +204,8 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  onChangeSippingAddress(index) {
-    this.order.sippingAddress = this.curCustomer.addresses[index];
+  onChangeShippingAddress(index) {
+    this.order.shippingAddress = this.curCustomer.addresses[index];
   }
 
   onSubmit() {
@@ -221,7 +221,7 @@ export class OrderComponent implements OnInit {
     this.order = new Order();
     this.order.products = new Array<Product>();
     this.order.billingAddress = new Address();
-    this.order.sippingAddress = new Address();
+    this.order.shippingAddress = new Address();
     this.order.salesPerson = null;
     this.curCustomer = new Customer();
     this.curCustomer.addresses = new Array<Address>();
@@ -245,7 +245,6 @@ export class OrderComponent implements OnInit {
 
   onSalesPersonChanged(code: string) {
     this.order.salesPerson = this.salesPersons.find(man => man.code === code);
-
     this.orderForm.patchValue({
       showCode: code
     });
