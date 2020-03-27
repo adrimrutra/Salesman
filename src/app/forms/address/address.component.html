@@ -7,8 +7,8 @@
       <div class="col-md-12">
         <div class="form-group">
           <div class="col-sm-12">
-            <span class="asterisk" style="left: 77px;" *ngIf="!addressForm.get('street1').valid && !addressForm.get('street1').touched">*</span>
             <input type="text" class="form-control" id="street1" formControlName="street1" placeholder="Street 1">
+            <span class="asterisk" style="left: 77px;" *ngIf="!addressForm.get('street1').valid && !addressForm.get('street1').touched">*</span>
             <span *ngIf="!addressForm.get('street1').valid && addressForm.get('street1').touched"
               class="help-block">
               This field is required!
@@ -33,22 +33,22 @@
       <div class="col-md-12">
         <div class="form-group">
           <div class="col-sm-12 col-md-6">
-            <span class="asterisk" style="left: 53px;" *ngIf="!addressForm.get('city').valid && !addressForm.get('city').touched">*</span>
             <input type="text" class="form-control" id="city" formControlName="city" placeholder="City">
+            <span class="asterisk" style="left: 53px;" *ngIf="!addressForm.get('city').valid && !addressForm.get('city').touched">*</span>
             <span *ngIf="!addressForm.get('city').valid && addressForm.get('city').touched"
               class="help-block">This field is required!
             </span>
           </div>
           <div class="col-sm-6 col-md-3">
-            <span class="asterisk" style="left: 62px;" *ngIf="!addressForm.get('state').valid && !addressForm.get('state').touched">*</span>
             <input type="text" class="form-control" id="state" formControlName="state" placeholder="State">
+            <span class="asterisk" style="left: 62px;" *ngIf="!addressForm.get('state').valid && !addressForm.get('state').touched">*</span>
             <span *ngIf="!addressForm.get('state').valid && addressForm.get('state').touched"
               class="help-block">Required!
             </span>
           </div>
           <div class="col-sm-6 col-md-3">
-            <span class="asterisk" style="left: 52px;" *ngIf="!addressForm.get('postcode').valid && !addressForm.get('postcode').touched">*</span>
             <input type="text" class="form-control" id="postcode" formControlName="postcode" placeholder="ZIP">
+            <span class="asterisk" style="left: 52px;" *ngIf="!addressForm.get('postcode').valid && !addressForm.get('postcode').touched">*</span>
             <span *ngIf="!addressForm.get('postcode').valid && addressForm.get('postcode').touched"
               class="help-block">Required!
             </span>
@@ -62,8 +62,8 @@
       <div class="col-md-12">
         <div class="form-group">
           <div class="col-sm-12">
-            <span class="asterisk" style="left: 78px;" *ngIf="!addressForm.get('country').valid && !addressForm.get('country').touched">*</span>
             <input type="text" class="form-control" id="country" formControlName="country" placeholder="Country">
+            <span class="asterisk" style="left: 78px;" *ngIf="!addressForm.get('country').valid && !addressForm.get('country').touched">*</span>
             <span *ngIf="!addressForm.get('country').valid && addressForm.get('country').touched"
               class="help-block">
               This field is required!
@@ -122,9 +122,9 @@
       <div class="col-md-12">
         <div class="form-group">
           <div class="col-sm-12">
-            <span class="asterisk" style="left: 156px;" *ngIf="!addressForm.get('shippingPreferenceAccount').valid && !addressForm.get('shippingPreferenceAccount').touched">*</span>
             <input type="text" class="form-control" id="shippingPreferenceAccount"
               formControlName="shippingPreferenceAccount" placeholder="Shipper Account No.">
+            <span class="asterisk" style="left: 156px;" *ngIf="!addressForm.get('shippingPreferenceAccount').valid && !addressForm.get('shippingPreferenceAccount').touched">*</span>
             <span
               *ngIf="!addressForm.get('shippingPreferenceAccount').valid && addressForm.get('shippingPreferenceAccount').touched"
               class="help-block">

@@ -42,6 +42,10 @@ export class CustomerCreateComponent implements OnInit, OnDestroy {
     );
   }
 
+  onFocus(id: string) {
+    //document.getElementById(`${id}-asterisk`).style.color = 'transparent';
+  }
+
   ngOnInit() {
     this.addAddress();
   }

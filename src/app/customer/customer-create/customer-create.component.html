@@ -54,10 +54,10 @@
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                       <div class="col-xs-12 col-sm-12 col-sm-12">
-                        <span class="asterisk" style="left: 130px;"
-                          *ngIf="!customerForm.get('companyName').valid && !customerForm.get('companyName').touched">*</span>
                         <input type="text" class="form-control placeholder" id="companyName"
                           formControlName="companyName" placeholder="Company Name">
+                        <span class="asterisk" style="left: 130px;"
+                          *ngIf="!customerForm.get('companyName').valid && !customerForm.get('companyName').touched">*</span>
                         <span *ngIf="!customerForm.get('companyName').valid && customerForm.get('companyName').touched"
                           class="help-block">
                           This field is required!
@@ -72,10 +72,10 @@
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                       <div class="col-sm-4">
-                        <span class="asterisk" style="left: 115px;"
-                          *ngIf="!customerForm.get('customerNumber').valid && !customerForm.get('customerNumber').touched">*</span>
                         <input type="text" class="form-control" id="customerNumber" placeholder="Customer No."
                           formControlName="customerNumber">
+                        <span class="asterisk" style="left: 115px;"
+                          *ngIf="!customerForm.get('customerNumber').valid && !customerForm.get('customerNumber').touched">*</span>
                         <span
                           *ngIf="!customerForm.get('customerNumber').valid && customerForm.get('customerNumber').touched"
                           class="help-block">
@@ -83,19 +83,19 @@
                         </span>
                       </div>
                       <div class="col-sm-4">
+                        <input type="text" class="form-control" id="dba" formControlName="dba" placeholder="DBA">
                         <span class="asterisk" style="left: 58px;"
                           *ngIf="!customerForm.get('dba').valid && !customerForm.get('dba').touched">*</span>
-                        <input type="text" class="form-control" id="dba" formControlName="dba" placeholder="DBA">
                         <span *ngIf="!customerForm.get('dba').valid && customerForm.get('dba').touched"
                           class="help-block">
                           This field is required!
                         </span>
                       </div>
                       <div class="col-sm-4">
-                        <span class="asterisk" style="left: 70px;"
-                          *ngIf="!customerForm.get('vatNumber').valid && !customerForm.get('vatNumber').touched">*</span>
                         <input type="text" class="form-control" id="vatNumber" formControlName="vatNumber"
                           placeholder="Tax ID">
+                        <span class="asterisk" style="left: 70px;"
+                          *ngIf="!customerForm.get('vatNumber').valid && !customerForm.get('vatNumber').touched">*</span>
                         <span *ngIf="!customerForm.get('vatNumber').valid && customerForm.get('vatNumber').touched"
                           class="help-block">
                           This field is required!
@@ -109,9 +109,10 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <div class="col-sm-6">
+                        <input type="text" class="form-control" id="website" formControlName="website" placeholder="Website">
                         <span class="asterisk" style="left: 80px;"
                           *ngIf="!customerForm.get('website').dirty && !customerForm.get('website').touched">*</span>
-                        <input type="text" class="form-control" id="website" formControlName="website" placeholder="Website">
+
                         <span *ngIf="!customerForm.get('website').valid && customerForm.get('website').touched" class="help-block">
                               <span *ngIf="customerForm.get('website').errors['webValidator']">Wrong Website format!</span>
                               <span *ngIf="customerForm.get('website').errors['required']">This field is
@@ -119,9 +120,9 @@
                         </span>
                       </div>
                       <div class="col-sm-6">
+                        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
                         <span class="asterisk" style="left: 66px;"
                           *ngIf="!customerForm.get('email').dirty && !customerForm.get('email').touched">*</span>
-                        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
                         <span *ngIf="!customerForm.get('email').valid && customerForm.get('email').touched" class="help-block">
                           <span *ngIf="customerForm.get('email').errors['emailValidator']">Wrong Email format!</span>
                           <span *ngIf="customerForm.get('email').errors['required']">This field is required!</span>
@@ -136,11 +137,10 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <div class="col-sm-6">
-                        <span class="asterisk" style="left: 70px;"
-                          *ngIf="!customerForm.get('phoneCell').dirty && !customerForm.get('phoneCell').touched">*</span>
                         <input type="text" class="form-control" id="phoneCell" formControlName="phoneCell"
                           placeholder="Mobile">
-
+                          <span class="asterisk" style="left: 70px;"
+                          *ngIf="!customerForm.get('phoneCell').dirty && !customerForm.get('phoneCell').touched">*</span>
                           <span
                           *ngIf="!customerForm.get('phoneCell').valid && customerForm.get('phoneCell').touched"
                           class="help-block">
@@ -152,10 +152,10 @@
                       </div>
 
                       <div class="col-sm-6">
-                        <span class="asterisk" style="left: 70px;"
-                          *ngIf="!customerForm.get('phoneLandline').dirty && !customerForm.get('phoneLandline').touched">*</span>
                         <input type="text" class="form-control" id="phoneLandline" formControlName="phoneLandline"
                           placeholder="Phone">
+                        <span class="asterisk" style="left: 70px;"
+                          *ngIf="!customerForm.get('phoneLandline').dirty && !customerForm.get('phoneLandline').touched">*</span>
                         <span
                           *ngIf="!customerForm.get('phoneLandline').valid && customerForm.get('phoneLandline').touched"
                           class="help-block">
@@ -255,10 +255,10 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-xs-12 col-sm-12 col-md-6">
-                            <span class="asterisk" style="left: 98px;"
-                              *ngIf="!customerForm.get('contactFirstName').valid && !customerForm.get('contactFirstName').touched">*</span>
                             <input type="text" class="form-control" id="contactFirstName"
                               formControlName="contactFirstName" placeholder="First Name">
+                            <span class="asterisk" style="left: 98px;"
+                              *ngIf="!customerForm.get('contactFirstName').valid && !customerForm.get('contactFirstName').touched">*</span>
                             <span
                               *ngIf="!customerForm.get('contactFirstName').valid && customerForm.get('contactFirstName').touched"
                               class="help-block">
@@ -266,10 +266,10 @@
                             </span>
                           </div>
                           <div class="col-xs-12 col-sm-12 col-md-6">
-                            <span class="asterisk" style="left: 95px;"
-                              *ngIf="!customerForm.get('contactLastName').valid && !customerForm.get('contactLastName').touched">*</span>
                             <input type="text" class="form-control" id="contactLastName"
                               formControlName="contactLastName" placeholder="Last name">
+                            <span class="asterisk" style="left: 95px;"
+                              *ngIf="!customerForm.get('contactLastName').valid && !customerForm.get('contactLastName').touched">*</span>
                             <span
                               *ngIf="!customerForm.get('contactLastName').valid && customerForm.get('contactLastName').touched"
                               class="help-block">
@@ -285,9 +285,9 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-sm-12">
+                            <input type="email" class="form-control" id="contactEmail" formControlName="contactEmail" placeholder="Email">
                             <span class="asterisk" style="left: 65px;"
                               *ngIf="!customerForm.get('contactEmail').dirty && !customerForm.get('contactEmail').touched">*</span>
-                            <input type="email" class="form-control" id="contactEmail" formControlName="contactEmail" placeholder="Email">
                             <span *ngIf="!customerForm.get('contactEmail').valid && customerForm.get('contactEmail').touched" class="help-block">
                               <span *ngIf="customerForm.get('contactEmail').errors['emailValidator']">Wrong Email format!</span>
                               <span *ngIf="customerForm.get('contactEmail').errors['required']">This field is required!</span>
@@ -302,10 +302,10 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-sm-12">
-                            <span class="asterisk" style="left: 97px;"
-                              *ngIf="!customerForm.get('contactPhoneCell').dirty && !customerForm.get('contactPhoneCell').touched">*</span>
                             <input type="test" class="form-control" id="contactPhoneCell"
                               formControlName="contactPhoneCell" placeholder="Cell Phone">
+                            <span class="asterisk" style="left: 97px;"
+                              *ngIf="!customerForm.get('contactPhoneCell').dirty && !customerForm.get('contactPhoneCell').touched">*</span>
                             <span
                               *ngIf="!customerForm.get('contactPhoneCell').valid && customerForm.get('contactPhoneCell').dirty"
                               class="help-block">
@@ -323,10 +323,10 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <div class="col-sm-12">
-                            <span class="asterisk" style="left: 126px;"
-                              *ngIf="!customerForm.get('contactPhoneLandline').dirty && !customerForm.get('contactPhoneLandline').touched">*</span>
                             <input type="test" class="form-control" id="contactPhoneLandline"
                               formControlName="contactPhoneLandline" placeholder="Landline Phone">
+                            <span class="asterisk" style="left: 126px;"
+                              *ngIf="!customerForm.get('contactPhoneLandline').dirty && !customerForm.get('contactPhoneLandline').touched">*</span>
                             <span
                               *ngIf="!customerForm.get('contactPhoneLandline').valid && customerForm.get('contactPhoneLandline').touched"
                               class="help-block">

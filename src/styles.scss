@@ -33,6 +33,10 @@
     color: #d00; 
 }
 
+input:focus::placeholder{
+    color: transparent;
+}
 
-
-
+input:focus + span.asterisk {
+    color: transparent;
+}
