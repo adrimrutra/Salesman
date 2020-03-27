@@ -112,7 +112,6 @@
                         <input type="text" class="form-control" id="website" formControlName="website" placeholder="Website">
                         <span class="asterisk" style="left: 80px;"
                           *ngIf="!customerForm.get('website').dirty && !customerForm.get('website').touched">*</span>
-
                         <span *ngIf="!customerForm.get('website').valid && customerForm.get('website').touched" class="help-block">
                               <span *ngIf="customerForm.get('website').errors['webValidator']">Wrong Website format!</span>
                               <span *ngIf="customerForm.get('website').errors['required']">This field is
